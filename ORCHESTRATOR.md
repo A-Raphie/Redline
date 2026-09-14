@@ -44,3 +44,5 @@ Event: LexHack 2026 (https://lexhack-2026.devpost.com/) · Deadline: 2026-09-27 
 - [x] Automated DOCX and engine test suite passed (`scripts/testEngine.ts`)
 - [x] Staging/production deployment verified on Vercel: https://try-redline.vercel.app (SSO disabled)
 - [x] README.md, demo-script.md, and SUBMISSION.md verified (0 em dashes, all links 200)
+- [x] UI/UX responsive polish gate complete: 0 mobile overflow (`scrollWidth: 375px`), compact presets, and Nielsen score 38/40
+

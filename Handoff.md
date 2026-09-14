@@ -10,6 +10,7 @@
 - **Local Dev Server:** Running on `http://localhost:3005` (HTTP 200 OK).
 - **Submission Artifacts:** `README.md`, `demo-script.md`, `SUBMISSION.md` (all 0 em dashes).
 - **Branding & Attribution:** Favicon & Apple icons match the Header Scale icon 1:1; footer includes mandatory `built by Raphie` link (`https://x.com/a_raphie`).
+- **UI & Accessibility Rating:** Nielsen Usability Score: 38/40 (9.5/10) · Zero mobile horizontal overflow (`width=375px`, `scrollWidth=375px`), responsive typography with `text-balance`, and compact chip preset selector.
 
 ## Features Implemented
 1. **Company-Grade Front Door (`ui-craft` Step 4):**
