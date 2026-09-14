@@ -60,13 +60,23 @@ We learned that the primary bottleneck in B2B contract negotiation isn't generat
 - **EU/UK GDPR Data Processing Addendum (DPA) Auditor**: Automated checking for standard contractual clauses (SCCs) and Schrems II compliance.
 - **CLI & CI/CD Pipeline Integration**: Enabling engineering teams to audit vendor license terms and service contracts directly within git pull requests before purchasing SaaS tools.
 
+### Open-Source Libraries & Standards Declaration (Criterion 5 Transparency)
+In compliance with LexHack 2026 rules, we transparently declare all pre-existing open-source libraries and standards used:
+- **Standards**: Common Paper Cloud Service Agreement v1.0 and Mutual NDA v1.0 (Creative Commons / MIT License).
+- **Document Engine**: `docx` npm library (v9.5.3) for generating Office OpenXML binary blobs with tracked change nodes.
+- **Parser**: `mammoth` (v1.11.0) for client-side `.docx` AST extraction without backend telemetry.
+- **Diff Algorithm**: `diff` npm package (v9.0.0) for word and character Myers diff AST generation.
+- **UI Framework**: Next.js 15 (React 19), TypeScript 5, Tailwind CSS, `lucide-react` icons, `clsx`, `tailwind-merge`.
+- **AI Models / Backend API Keys**: None used in runtime. Redline uses deterministic AST deviation benchmarking against Common Paper standards to guarantee zero data leakage, zero hallucinations, and sub-2-second audits.
+
 ---
 
-### Judging Criteria Mapping
+### Official Judging Criteria Mapping
 
 | LexHack 2026 Criterion | Weight | How Redline Delivers & Proves It |
 | :--- | :---: | :--- |
-| **Legal Innovation & Open Standards** | **30%** | Replaces opaque vendor boilerplate with open-source Common Paper standard terms (Cloud Service Agreement & Mutual NDA). Provides deterministic, verifiable risk benchmarking rather than black-box guesses. |
-| **Technical Execution & OpenXML** | **25%** | Delivers genuine Microsoft Word `<w:ins>` and `<w:del>` tracked changes synthesized in memory via OpenXML AST nodes. Zero external API keys, zero server dependencies, and 100% client-side privacy. |
-| **Product & User Experience** | **25%** | Progressive disclosure UI designed for both founders and general counsel. Features plain-English translations, 1-click batch fix toggles, and formatted executive pushback email memos. |
-| **Practical Commercial Impact** | **20%** | Solves an immediate, expensive problem: preventing startups and SMBs from signing token liability caps, sneak non-competes, and predatory price escalation traps. |
+| **Real-World Impact & Feasibility** | **25%** | Solves an immediate, expensive commercial vulnerability for startups and SMBs who cannot afford \$800/hr outside counsel. Prevents companies from blindly signing token \$100 liability caps, sneak non-competes, and unilateral price hikes. Ready to deploy today with 100% in-browser privacy. |
+| **Technical Execution & Functionality** | **25%** | Production-ready, client-side instrument built with Next.js 15 and TypeScript. Synthesizes genuine Microsoft Word `<w:ins>` and `<w:del>` OpenXML revisions in memory, passing native inspection in Word 365 and Google Docs. Zero backend errors, zero external API keys needed. |
+| **User Experience & Design** | **20%** | Intuitive progressive disclosure interface designed under the Warm Paper grammar. Translates dense legalese into plain English first for non-lawyer operators, with expandable side-by-side diff accordions for legal counsel. Includes 1-click batch standard fixes and copyable pushback email memos. |
+| **Innovation & Originality** | **15%** | Novel approach: replaces unpredictable LLM prompts with deterministic open-standard benchmarking (Common Paper). Rather than producing flat PDFs or highlighted text, Redline directly bridges web diff algorithms to binary Office OpenXML tracked change ASTs. |
+| **Presentation & Documentation** | **15%** | Clean 105-second timed demo video mapped scene-by-scene to judging metrics. Live working deployment at `https://try-redline.vercel.app`, public GitHub repository with verified benchmark proof tables, honesty tables, local setup instructions, and transparent open-source library disclosures. |

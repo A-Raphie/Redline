@@ -9,7 +9,15 @@ Event: LexHack 2026 (https://lexhack-2026.devpost.com/) · Deadline: 2026-09-27 
 | Stage 2 Plan + Design | 2026-09-14 | 2026-09-14 | Core spec files created, tokens locked, design direction set |
 | Stage 3 Build | 2026-09-14 | 2026-09-14 | Full Next.js app built, docx OpenXML exporter verified, static build clean |
 | Stage 4 Verify + Polish | 2026-09-14 | 2026-09-14 | Front door built; zero-raw-hex gate passed; audit fixes deployed |
-| Stage 5 Documentation & Submission | 2026-09-14 | 2026-09-14 | README.md, demo-script.md, SUBMISSION.md drafted with 0 em dashes |
+| Stage 5 Documentation & Submission | 2026-09-14 | 2026-09-14 | README.md, demo-script.md, SUBMISSION.md aligned with official Devpost criteria |
+
+## Official LexHack 2026 Judging Criteria (Verified via Devpost)
+1. **Real-World Impact & Feasibility (25%):** Genuine challenge in legal access/civic tech/digital rights; realistic, practical deployment.
+2. **Technical Execution & Functionality (25%):** Working prototype, functional code, structure, tech stack integration (Mammoth + OpenXML AST).
+3. **User Experience & Design (20%):** Intuitive, accessible for everyday users/non-lawyers; progressive disclosure.
+4. **Innovation & Originality (15%):** Creative concept, open-standard benchmarking (Common Paper) vs black-box prompt hallucinations.
+5. **Presentation & Documentation (15%):** Compelling video demonstration (<=3 min), transparent writeup declaring all open-source libraries.
+
 
 ## Skill ledger
 | Skill | Stage | State | Note (reason / revisit trigger / result) |
