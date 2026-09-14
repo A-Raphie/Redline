@@ -6,7 +6,8 @@
 - **Design Grammar:** `winsznx/closeout` (Warm Paper / Closure Ledger: `#F5F1E8` linen canvas, `#FFFEFB` surface, `#1C1B1A` carbon ink, terracotta/forest diffs).
 - **Active Stage:** Stage 4 (Verify & Polish).
 - **Build Status:** Next.js static build `bun run build` passes cleanly with 0 errors.
-- **Dev Server:** Running on `http://localhost:3005` (HTTP 200 OK).
+- **Live Deployment:** [https://redline-lime-omega.vercel.app](https://redline-lime-omega.vercel.app) (SSO protection disabled).
+- **Local Dev Server:** Running on `http://localhost:3005` (HTTP 200 OK).
 
 ## Features Implemented
 1. **Company-Grade Front Door (`ui-craft` Step 4):**

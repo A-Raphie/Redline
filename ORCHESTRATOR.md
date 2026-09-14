@@ -32,4 +32,4 @@ Event: LexHack 2026 (https://lexhack-2026.devpost.com/) · Deadline: 2026-09-27 
 - [x] Front Door fold completed with live benchmark proof numbers
 - [x] Zero-raw-hex gate passed
 - [x] Automated DOCX and engine test suite passed (`scripts/testEngine.ts`)
-- [ ] Staging/production deployment check (Vercel/Netlify)
+- [x] Staging/production deployment verified on Vercel: https://redline-lime-omega.vercel.app (SSO disabled)
