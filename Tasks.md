@@ -33,8 +33,12 @@
 - [x] Build `ExportModal.tsx` providing direct download button for `.docx` and copyable executive pushback email memo.
 - [x] Verify exported `.docx` file generation integrity via automated test script (`scripts/testEngine.ts`).
 
-## Phase 6: Polish, Verification & Pre-Ship Gate [IN PROGRESS]
+## Phase 6: Polish, Verification & Submission Ready [COMPLETED]
 - [x] Enforce `semantic-tokens` zero-raw-hex gate check (0 raw hexes across all component files).
 - [x] Test 90-second judge flow end-to-end.
 - [x] Verify clean Next.js 15 production build (`bun run build` static output: 0 errors).
-- [ ] Update `ORCHESTRATOR.md` and `Handoff.md`.
+- [x] Generate comprehensive project `README.md` (`readme` skill: badges, proof table, honesty table, 0 em dashes).
+- [x] Generate timed scene-by-scene demo script `demo-script.md` (`demo-script` skill: 105s, criteria-mapped, 0 em dashes).
+- [x] Generate official Devpost submission copy `SUBMISSION.md` (`submission` skill: one-liner, criteria mapping, 0 em dashes).
+- [x] Update `ORCHESTRATOR.md` and `Handoff.md`.
+

@@ -1,13 +1,14 @@
 # Redline — Project Handoff & Current State
 
 ## Current State (2026-09-14)
-- **Status:** Full functional implementation, company-grade Front Door, and Warm Paper UI design complete.
+- **Status:** Full functional implementation, Warm Paper UI, comprehensive README, timed demo script, and Devpost submission ready.
 - **Repository:** `/Users/raphie/Documents/Hackathons/redline` (`main` branch).
 - **Design Grammar:** `winsznx/closeout` (Warm Paper / Closure Ledger: `#F5F1E8` linen canvas, `#FFFEFB` surface, `#1C1B1A` carbon ink, terracotta/forest diffs).
-- **Active Stage:** Stage 4 (Verify & Polish).
+- **Active Stage:** Stage 6 (Submission Ready).
 - **Build Status:** Next.js static build `bun run build` passes cleanly with 0 errors.
-- **Live Deployment:** [https://try-redline.vercel.app](https://try-redline.vercel.app) (SSO protection disabled).
+- **Live Deployment:** [https://try-redline.vercel.app](https://try-redline.vercel.app) (SSO protection disabled, HTTP 200).
 - **Local Dev Server:** Running on `http://localhost:3005` (HTTP 200 OK).
+- **Submission Artifacts:** `README.md`, `demo-script.md`, `SUBMISSION.md` (all 0 em dashes).
 
 ## Features Implemented
 1. **Company-Grade Front Door (`ui-craft` Step 4):**

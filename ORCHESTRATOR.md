@@ -8,7 +8,8 @@ Event: LexHack 2026 (https://lexhack-2026.devpost.com/) · Deadline: 2026-09-27 
 | Stage 1 Idea + Validation | 2026-09-14 | 2026-09-14 | Selected Idea 1: Redline (Common Paper B2B Contract Redline Engine) |
 | Stage 2 Plan + Design | 2026-09-14 | 2026-09-14 | Core spec files created, tokens locked, design direction set |
 | Stage 3 Build | 2026-09-14 | 2026-09-14 | Full Next.js app built, docx OpenXML exporter verified, static build clean |
-| Stage 4 Verify + Polish | 2026-09-14 | In Progress | Front door built (ui-craft Step 4); winsznx/closeout Warm Paper grammar applied; zero-raw-hex gate passed |
+| Stage 4 Verify + Polish | 2026-09-14 | 2026-09-14 | Front door built; zero-raw-hex gate passed; audit fixes deployed |
+| Stage 5 Documentation & Submission | 2026-09-14 | 2026-09-14 | README.md, demo-script.md, SUBMISSION.md drafted with 0 em dashes |
 
 ## Skill ledger
 | Skill | Stage | State | Note (reason / revisit trigger / result) |
@@ -23,8 +24,9 @@ Event: LexHack 2026 (https://lexhack-2026.devpost.com/) · Deadline: 2026-09-27 
 | `ui-craft` | 3 | ✅ done | Step 4 Front Door completed (<10s stranger orientation, live proof bar, single primary CTA) |
 | `browser-testing-with-devtools` | 4 | ✅ done | Local preview active and verified at http://localhost:3005 (HTTP 200 OK) |
 | `mock-hunter` | 4 | ✅ done | Verified real OpenXML byte generation and real Diff AST |
-| `demo-script` | 6 | ⏸ deferred | 90s judge-path video script |
-| `submission` | 6 | ⏸ deferred | Devpost form fields and criterion mapping |
+| `readme` | 5 | ✅ done | Badges, proof table, honesty table, 0 em dashes |
+| `demo-script` | 6 | ✅ done | 105s judge-path video script, criteria-tagged, 0 em dashes |
+| `submission` | 6 | ✅ done | Devpost form fields and LexHack 2026 criterion mapping |
 
 ## Stage gate
 - [x] Stage 0 & 1 exit sweeps complete
@@ -33,3 +35,4 @@ Event: LexHack 2026 (https://lexhack-2026.devpost.com/) · Deadline: 2026-09-27 
 - [x] Zero-raw-hex gate passed
 - [x] Automated DOCX and engine test suite passed (`scripts/testEngine.ts`)
 - [x] Staging/production deployment verified on Vercel: https://try-redline.vercel.app (SSO disabled)
+- [x] README.md, demo-script.md, and SUBMISSION.md verified (0 em dashes, all links 200)
