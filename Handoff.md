@@ -9,6 +9,7 @@
 - **Live Deployment:** [https://try-redline.vercel.app](https://try-redline.vercel.app) (SSO protection disabled, HTTP 200).
 - **Local Dev Server:** Running on `http://localhost:3005` (HTTP 200 OK).
 - **Submission Artifacts:** `README.md`, `demo-script.md`, `SUBMISSION.md` (all 0 em dashes).
+- **Branding & Attribution:** Favicon & Apple icons match the Header Scale icon 1:1; footer includes mandatory `built by Raphie` link (`https://x.com/a_raphie`).
 
 ## Features Implemented
 1. **Company-Grade Front Door (`ui-craft` Step 4):**
