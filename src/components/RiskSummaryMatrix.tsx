@@ -1,21 +1,25 @@
 'use client';
 
 import React from 'react';
-import { AlertCircle, CheckCircle, ShieldAlert, Filter } from 'lucide-react';
+import { AlertCircle, CheckCircle, ShieldAlert, Filter, Check, RotateCcw } from 'lucide-react';
 import { AuditReport, ClauseCategory } from '../lib/types';
 
 interface RiskSummaryMatrixProps {
   report: AuditReport;
   selectedCategory: ClauseCategory | 'ALL';
   onSelectCategory: (category: ClauseCategory | 'ALL') => void;
+  onAcceptAll: (accept: boolean) => void;
 }
 
 export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
   report,
   selectedCategory,
   onSelectCategory,
+  onAcceptAll,
 }) => {
   const isDangerous = report.grade === 'F' || report.grade === 'D';
+  const allAccepted = report.clauses.every((c) => c.isAccepted);
+  const someAccepted = report.clauses.some((c) => c.isAccepted);
 
   return (
     <div className="paper-card p-5 mb-8">
@@ -53,12 +57,34 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
           </div>
         </div>
 
-        {/* Quick Numbers */}
-        <div className="flex items-center space-x-4 self-start sm:self-auto text-xs text-[var(--text-muted)]">
-          <div>
+        {/* Batch Action & Quick Numbers */}
+        <div className="flex flex-col sm:items-end gap-2 self-start sm:self-auto">
+          <div className="text-xs text-[var(--text-muted)]">
             <span className="font-bold text-[var(--text-primary)] text-sm">{report.flaggedClauses}</span> of{' '}
             {report.totalClauses} clauses need changes
           </div>
+
+          <button
+            type="button"
+            onClick={() => onAcceptAll(!allAccepted)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1.5 shadow-xs ${
+              allAccepted
+                ? 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-default)]'
+                : 'bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90'
+            }`}
+          >
+            {allAccepted ? (
+              <>
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset All to Vendor Terms</span>
+              </>
+            ) : (
+              <>
+                <Check className="w-3.5 h-3.5" />
+                <span>Accept All Common Paper Fixes</span>
+              </>
+            )}
+          </button>
         </div>
       </div>
 

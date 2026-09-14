@@ -88,6 +88,19 @@ export default function Home() {
     }
   };
 
+  // Batch Accept or Revert all recommended standard fixes
+  const handleAcceptAll = (accept: boolean) => {
+    if (!report) return;
+    const updatedClauses = report.clauses.map((c) => ({
+      ...c,
+      isAccepted: accept,
+    }));
+    setReport({
+      ...report,
+      clauses: updatedClauses,
+    });
+  };
+
   const acceptedCount = report ? report.clauses.filter((c) => c.isAccepted).length : 0;
 
   return (
@@ -136,6 +149,7 @@ export default function Home() {
               report={report}
               selectedCategory={selectedCategory}
               onSelectCategory={setSelectedCategory}
+              onAcceptAll={handleAcceptAll}
             />
 
             {/* Plain English Clause Breakdown with Progressive Legal Diff */}
@@ -156,6 +170,15 @@ export default function Home() {
               </div>
 
               <div className="flex items-center space-x-2 w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => setIsExportModalOpen(true)}
+                  className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[var(--bg-subtle)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)] transition-all flex items-center justify-center space-x-1.5 shadow-xs cursor-pointer"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>Pushback Email</span>
+                </button>
+
                 <button
                   type="button"
                   onClick={() => setIsExportModalOpen(true)}

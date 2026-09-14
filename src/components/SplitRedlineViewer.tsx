@@ -174,6 +174,8 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
               <button
                 type="button"
                 onClick={() => toggleExpand(clause.id)}
+                aria-expanded={isExpanded}
+                aria-controls={`diff-${clause.id}`}
                 className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center space-x-1 font-semibold transition-colors"
               >
                 <span>{isExpanded ? 'Hide legal wording & redline diff' : 'Show legal wording & redline diff'}</span>
@@ -181,7 +183,7 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
               </button>
 
               {isExpanded && (
-                <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-150">
+                <div id={`diff-${clause.id}`} className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-150">
                   {/* Original Legal Clause */}
                   <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-base)] p-3.5">
                     <div className="text-[10px] uppercase font-bold text-[var(--text-muted)] mb-1.5">

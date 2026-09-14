@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://try-redline.vercel.app'),
   title: 'Redline — Open-Standard B2B Contract Audit & Tracked Redlines',
   description:
-    'Audit incoming contracts against open-standard legal frameworks (Common Paper & Bonterms). Detect predatory liability caps and renewal traps, and export attorney-grade .docx with native Word tracked changes.',
+    'Never sign an unfair contract. Audit incoming agreements against Common Paper open standards, catch hidden liability and renewal traps, and export attorney-grade Word documents with native tracked changes.',
   keywords: [
     'contract review',
     'Common Paper',
@@ -16,6 +17,21 @@ export const metadata: Metadata = {
     'liability cap audit',
   ],
   authors: [{ name: 'Redline Team (LexHack 2026)' }],
+  openGraph: {
+    title: 'Redline: Open-Standard B2B Contract Audit & Tracked Redlines',
+    description:
+      'Never sign an unfair contract. Catch hidden liability and renewal traps, and export attorney-grade Word documents with native tracked changes.',
+    url: 'https://try-redline.vercel.app',
+    siteName: 'Redline',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Redline: Open-Standard B2B Contract Audit',
+    description:
+      'Catch hidden liability and renewal traps. Export attorney-grade Word documents with native tracked changes.',
+  },
 };
 
 export const viewport: Viewport = {
