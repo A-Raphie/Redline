@@ -39,7 +39,7 @@ export function generateFullRedlinedDocumentText(clauses: Clause[]): string {
   return clauses
     .map((c) => {
       if (c.isAccepted && c.proposedFallback !== c.originalText) {
-        return `[REVISED — ALIGNED WITH ${c.standardReference}]\n${c.proposedFallback}`;
+        return `[REVISED: ALIGNED WITH ${c.standardReference}]\n${c.proposedFallback}`;
       }
       return c.originalText;
     })

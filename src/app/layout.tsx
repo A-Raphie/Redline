@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://try-redline.vercel.app'),
-  title: 'Redline — Open-Standard B2B Contract Audit & Tracked Redlines',
+  title: 'Redline: Open-Standard B2B Contract Audit & Tracked Redlines',
   description:
     'Never sign an unfair contract. Audit incoming agreements against Common Paper open standards, catch hidden liability and renewal traps, and export attorney-grade Word documents with native tracked changes.',
   keywords: [
