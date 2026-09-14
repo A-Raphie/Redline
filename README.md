@@ -8,7 +8,7 @@ Audit incoming B2B vendor contracts against open standards and push back with na
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20Client--Side-4A5568?style=flat-square)](https://try-redline.vercel.app)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
-[Live App](https://try-redline.vercel.app) · [Proof Table](#verified-benchmark-proof) · [Honesty Table](#honesty-table) · [How it Works](#how-it-works) · [Run Locally](#run-locally)
+[Live App](https://try-redline.vercel.app) · [Proof Table](#verified-benchmark-proof) · [Honesty Table](#honesty-table) · [How it Works](#how-it-works) · [Run Locally](#run-locally) · [Built by Raphie](https://x.com/a_raphie)
 
 Most enterprise vendor contracts hide one-sided traps: token liability caps ($100), unilateral AI data training rights, and 90-day renewal traps. Redline audits agreements against open Common Paper standard terms in your browser, translates legal risks into plain English, and generates attorney-grade Word `.docx` documents with native tracked changes (`<w:ins>` and `<w:del>`).
 

@@ -2,6 +2,7 @@
 
 **Live Product:** [https://try-redline.vercel.app](https://try-redline.vercel.app)  
 **GitHub Repository:** [https://github.com/A-Raphie/redline](https://github.com/A-Raphie/redline)  
+**Builder:** [Raphie](https://x.com/a_raphie)  
 **Standard Benchmarked:** Common Paper Cloud Service Agreement & Mutual NDA (MIT License)  
 
 ---

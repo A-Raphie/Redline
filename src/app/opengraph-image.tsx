@@ -25,16 +25,24 @@ export default function OgImage() {
               width: '56px',
               height: '56px',
               borderRadius: '14px',
-              background: '#382F42',
-              color: '#FFFEFB',
+              background: '#1B365D',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '28px',
-              fontWeight: 'bold',
             }}
           >
-            RL
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFEFB"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z m-14 0 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z M7 21h10 M12 3v18 M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+            </svg>
           </div>
           <span style={{ fontSize: '32px', fontWeight: 'bold', color: '#1C1B1A', letterSpacing: '-0.02em' }}>
             Redline
@@ -67,17 +75,23 @@ export default function OgImage() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '24px',
+            justifyContent: 'space-between',
+            width: '100%',
             fontSize: '18px',
             color: '#7C756D',
             fontWeight: 500,
           }}
         >
-          <span>Common Paper Standards</span>
-          <span>•</span>
-          <span>Native OpenXML Tracked Changes</span>
-          <span>•</span>
-          <span>100% Client-Side Privacy</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+            <span>Common Paper Standards</span>
+            <span>•</span>
+            <span>Native OpenXML Tracked Changes</span>
+            <span>•</span>
+            <span>100% Client-Side Privacy</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span>built by Raphie for LexHack 2026</span>
+          </div>
         </div>
       </div>
     ),

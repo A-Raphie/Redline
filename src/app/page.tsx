@@ -219,9 +219,20 @@ export default function Home() {
           </div>
 
           <div className="flex items-center space-x-3 text-[11px] text-[var(--text-muted)]">
-            <span>LexHack 2026 Entry</span>
+            <span>
+              Redline · built by{' '}
+              <a
+                href="https://x.com/a_raphie"
+                target="_blank"
+                rel="noreferrer"
+                className="underline text-[var(--text-secondary)] hover:text-[var(--brand)] transition-colors font-medium"
+              >
+                Raphie
+              </a>{' '}
+              for LexHack 2026
+            </span>
             <span>•</span>
-            <span>Common Paper Standard Terms (MIT)</span>
+            <span>Common Paper Standards (MIT)</span>
             <span>•</span>
             <span>100% Client-Side Privacy</span>
           </div>
