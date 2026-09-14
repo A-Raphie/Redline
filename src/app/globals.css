@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  /* Canvas & Surfaces */
+  --background: #080c14;
+  --panel: #0e1422;
+  --surface: #141c2e;
+  --surface-hover: #1c273e;
+  --line: #212c42;
+  --line-highlight: #3b4d70;
+
+  /* Typography */
+  --ink: #f8fafc;
+  --ink-secondary: #94a3b8;
+  --ink-muted: #64748b;
+
+  /* Redline Diff Tokens */
+  --diff-del-bg: rgba(239, 68, 68, 0.14);
+  --diff-del-text: #fca5a5;
+  --diff-del-border: rgba(239, 68, 68, 0.35);
+
+  --diff-ins-bg: rgba(34, 197, 94, 0.14);
+  --diff-ins-text: #86efac;
+  --diff-ins-border: rgba(34, 197, 94, 0.35);
+
+  --accent-gold: #e2b366;
+  --accent-gold-hover: #f3c780;
+  --accent-gold-dim: rgba(226, 179, 102, 0.12);
+
+  --risk-critical: #ef4444;
+  --risk-high: #f59e0b;
+  --risk-medium: #3b82f6;
+  --risk-low: #10b981;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-panel: var(--panel);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-line: var(--line);
+  --color-line-highlight: var(--line-highlight);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-diff-del-bg: var(--diff-del-bg);
+  --color-diff-del-text: var(--diff-del-text);
+  --color-diff-del-border: var(--diff-del-border);
+
+  --color-diff-ins-bg: var(--diff-ins-bg);
+  --color-diff-ins-text: var(--diff-ins-text);
+  --color-diff-ins-border: var(--diff-ins-border);
+
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-hover: var(--accent-gold-hover);
+  --color-accent-gold-dim: var(--accent-gold-dim);
+
+  --color-risk-critical: var(--risk-critical);
+  --color-risk-high: var(--risk-high);
+  --color-risk-medium: var(--risk-medium);
+  --color-risk-low: var(--risk-low);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar for dense legal text */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--line-highlight);
+}
+
+/* Legal Document Styling */
+.legal-serif {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.legal-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
