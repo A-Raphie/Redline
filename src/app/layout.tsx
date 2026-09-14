@@ -53,7 +53,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] antialiased selection:bg-[var(--diff-ins-bg)] selection:text-[var(--diff-ins-text)]">
+      <body className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] antialiased selection:bg-[var(--diff-ins-bg)] selection:text-[var(--diff-ins-text)] overflow-x-hidden">
         {children}
       </body>
     </html>

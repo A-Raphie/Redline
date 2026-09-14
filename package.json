@@ -2,7 +2,7 @@
   "name": "try-redline",
   "version": "0.1.0",
   "private": true,
-  "description": "Redline — Open-Standard B2B Contract Redlining & Risk Audit Instrument (LexHack 2026)",
+  "description": "Redline: Open-Standard B2B Contract Redlining & Risk Audit Instrument (LexHack 2026)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -123,11 +123,11 @@ export default function Home() {
             <span>Open-Standard Contract Safety Engine</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight text-balance">
             Never sign an unfair contract.
           </h1>
 
-          <p className="mt-3 text-base text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-balance">
             Upload any vendor agreement. We catch the hidden traps, explain them in plain English, and give you back an attorney-ready Word doc with fair industry standards.
           </p>
         </div>
@@ -162,20 +162,20 @@ export default function Home() {
 
             {/* Sticky Action Bottom Bar */}
             <div className="sticky bottom-4 mt-8 p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-strong)] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="flex items-center space-x-2 text-xs text-[var(--text-primary)]">
-                <CheckCircle2 className="w-4 h-4 text-[var(--diff-ins-text)]" />
+              <div className="flex items-center space-x-2 text-xs text-[var(--text-primary)] text-center sm:text-left">
+                <CheckCircle2 className="w-4 h-4 text-[var(--diff-ins-text)] shrink-0" />
                 <span className="font-semibold">
                   {acceptedCount} of {report.clauses.length} standard fixes ready to export
                 </span>
               </div>
 
-              <div className="flex items-center space-x-2 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
                 <button
                   type="button"
                   onClick={() => setIsExportModalOpen(true)}
                   className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[var(--bg-subtle)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)] transition-all flex items-center justify-center space-x-1.5 shadow-xs cursor-pointer"
                 >
-                  <Mail className="w-3.5 h-3.5" />
+                  <Mail className="w-3.5 h-3.5 shrink-0" />
                   <span>Pushback Email</span>
                 </button>
 
@@ -184,8 +184,9 @@ export default function Home() {
                   onClick={() => setIsExportModalOpen(true)}
                   className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-semibold bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90 transition-all flex items-center justify-center space-x-1.5 shadow-sm cursor-pointer"
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Redlined Word Doc (.docx)</span>
+                  <Download className="w-3.5 h-3.5 shrink-0" />
+                  <span className="hidden sm:inline">Download Redlined Word Doc (.docx)</span>
+                  <span className="sm:hidden">Download Redline (.docx)</span>
                 </button>
               </div>
             </div>
@@ -212,13 +213,13 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-[var(--border-default)] bg-[var(--bg-surface)] py-6 px-4 sm:px-6 mt-12 text-xs text-[var(--text-secondary)]">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center space-x-2">
-            <Scale className="w-4 h-4 text-[var(--brand)]" />
+          <div className="flex items-center space-x-2 text-center sm:text-left">
+            <Scale className="w-4 h-4 text-[var(--brand)] shrink-0" />
             <span className="font-bold text-[var(--text-primary)]">Redline</span>
             <span>: Open-Standard Contract Safety &amp; Redline Engine</span>
           </div>
 
-          <div className="flex items-center space-x-3 text-[11px] text-[var(--text-muted)]">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1 text-[11px] text-[var(--text-muted)] text-center sm:text-right">
             <span>
               Redline · built by{' '}
               <a

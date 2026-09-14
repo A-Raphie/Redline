@@ -44,9 +44,9 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Controls: Standard selector & Export */}
-          <div className="flex items-center space-x-3">
-            {/* Agreement Type Switcher */}
-            <div className="flex items-center bg-[var(--bg-subtle)] border border-[var(--border-default)] rounded-lg p-0.5 text-xs">
+          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+            {/* Agreement Type Switcher: Visible on tablet/desktop */}
+            <div className="hidden md:flex items-center bg-[var(--bg-subtle)] border border-[var(--border-default)] rounded-lg p-0.5 text-xs">
               <button
                 type="button"
                 onClick={() => onStandardChange('SAAS_CSA')}
@@ -76,14 +76,15 @@ export const Header: React.FC<HeaderProps> = ({
               type="button"
               onClick={onOpenExport}
               disabled={!hasDocument}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-xs ${
+              className={`flex items-center space-x-1.5 px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-xs ${
                 hasDocument
                   ? 'bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90 cursor-pointer'
                   : 'bg-[var(--bg-subtle)] text-[var(--text-muted)] cursor-not-allowed border border-[var(--border-default)]'
               }`}
             >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download Redline (.docx)</span>
+              <Download className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden sm:inline">Download Redline (.docx)</span>
+              <span className="sm:hidden">Export</span>
             </button>
           </div>
         </div>

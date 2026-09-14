@@ -1,4 +1,4 @@
-# Redline — Hackathon Orchestrator Ledger
+# Redline: Hackathon Orchestrator Ledger
 Event: LexHack 2026 (https://lexhack-2026.devpost.com/) · Deadline: 2026-09-27 17:00 EDT · Current stage: Stage 4 (Verify & Polish) · Updated: 2026-09-14
 
 ## Sweeps

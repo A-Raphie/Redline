@@ -22,27 +22,29 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
   const someAccepted = report.clauses.some((c) => c.isAccepted);
 
   return (
-    <div className="paper-card p-5 mb-8">
+    <div className="paper-card p-4 sm:p-5 mb-8 shadow-xs">
       {/* Top Reassuring Verdict */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border-default)]">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-start sm:items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
           {/* Grade Stamp */}
           <div
-            className={`w-14 h-14 rounded-xl border flex flex-col items-center justify-center font-bold legal-mono ${
+            className={`w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-xl border flex flex-col items-center justify-center font-bold legal-mono ${
               isDangerous
                 ? 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)] border-[var(--diff-del-border)]'
                 : 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)] border-[var(--diff-ins-border)]'
             }`}
           >
-            <span className="text-2xl leading-none">{report.grade}</span>
+            <span className="text-xl sm:text-2xl leading-none">{report.grade}</span>
             <span className="text-[8px] uppercase tracking-wider font-bold mt-0.5">GRADE</span>
           </div>
 
-          <div>
-            <div className="flex items-center space-x-2">
-              <h2 className="text-base font-bold text-[var(--text-primary)]">{report.contractTitle}</h2>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <h2 className="text-sm sm:text-base font-bold text-[var(--text-primary)] break-words leading-snug">
+                {report.contractTitle}
+              </h2>
               <span
-                className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                className={`text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full font-bold shrink-0 ${
                   isDangerous
                     ? 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)]'
                     : 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)]'
@@ -58,16 +60,18 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
         </div>
 
         {/* Batch Action & Quick Numbers */}
-        <div className="flex flex-col sm:items-end gap-2 self-start sm:self-auto">
-          <div className="text-xs text-[var(--text-muted)]">
-            <span className="font-bold text-[var(--text-primary)] text-sm">{report.flaggedClauses}</span> of{' '}
-            {report.totalClauses} clauses need changes
+        <div className="flex flex-col sm:items-end gap-2 shrink-0 w-full sm:w-auto">
+          <div className="text-xs text-[var(--text-muted)] flex items-center justify-between sm:justify-end">
+            <span>
+              <span className="font-bold text-[var(--text-primary)] text-sm">{report.flaggedClauses}</span> of{' '}
+              {report.totalClauses} clauses need changes
+            </span>
           </div>
 
           <button
             type="button"
             onClick={() => onAcceptAll(!allAccepted)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1.5 shadow-xs ${
+            className={`w-full sm:w-auto px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center justify-center space-x-1.5 shadow-xs cursor-pointer ${
               allAccepted
                 ? 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-default)]'
                 : 'bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90'
@@ -75,12 +79,12 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
           >
             {allAccepted ? (
               <>
-                <RotateCcw className="w-3.5 h-3.5" />
+                <RotateCcw className="w-3.5 h-3.5 shrink-0" />
                 <span>Reset All to Vendor Terms</span>
               </>
             ) : (
               <>
-                <Check className="w-3.5 h-3.5" />
+                <Check className="w-3.5 h-3.5 shrink-0" />
                 <span>Accept All Common Paper Fixes</span>
               </>
             )}
@@ -105,13 +109,13 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
           )}
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
           <button
             type="button"
             onClick={() => onSelectCategory('ALL')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
               selectedCategory === 'ALL'
-                ? 'bg-[var(--brand)] text-[var(--accent-foreground)] shadow-xs'
+                ? 'bg-[var(--brand)] text-[var(--accent-foreground)] shadow-xs ring-1 ring-[var(--brand)]'
                 : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-default)]'
             }`}
           >
@@ -129,7 +133,7 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
                   onClick={() => onSelectCategory(isSelected ? 'ALL' : cat.category)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1.5 ${
                     isSelected
-                      ? 'bg-[var(--brand)] text-[var(--accent-foreground)] shadow-xs'
+                      ? 'bg-[var(--brand)] text-[var(--accent-foreground)] shadow-xs ring-1 ring-[var(--brand)]'
                       : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-default)] hover:border-[var(--border-strong)]'
                   }`}
                 >
@@ -138,7 +142,7 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
                         isSelected
-                          ? 'bg-[var(--accent-foreground)] text-[var(--brand)]'
+                          ? 'bg-white/20 text-white'
                           : 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)]'
                       }`}
                     >

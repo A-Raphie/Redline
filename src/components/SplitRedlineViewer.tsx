@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Check, Info, AlertTriangle, ChevronDown, ChevronUp, Split, Sparkles, RotateCcw } from 'lucide-react';
+import { ChevronDown, ChevronUp, Check, RotateCcw, AlertTriangle, Sparkles, Scale, Info } from 'lucide-react';
 import { Clause, ClauseCategory, DiffPart } from '../lib/types';
 import { computeClauseDiff } from '../lib/engine/redlineGenerator';
 
@@ -34,7 +34,7 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
     const diffParts: DiffPart[] = computeClauseDiff(original, replacement);
 
     return (
-      <div className="leading-relaxed text-xs legal-mono space-y-1">
+      <div className="leading-relaxed text-xs legal-mono space-y-1 break-words">
         {diffParts.map((part, idx) => {
           if (part.type === 'delete') {
             return (
@@ -65,7 +65,7 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between px-1">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)]">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
           Contract Clauses ({filteredClauses.length})
         </h3>
         <span className="text-[11px] text-[var(--text-muted)]">
@@ -80,15 +80,15 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
         return (
           <div
             key={clause.id}
-            className={`paper-card p-5 transition-all ${
+            className={`paper-card p-4 sm:p-5 transition-all shadow-xs ${
               isPredatory ? 'border-l-4 border-l-[var(--diff-del-border)]' : 'border-l-4 border-l-[var(--diff-ins-border)]'
             }`}
           >
             {/* Header with Title and 1-Click Fix Button */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-default)]">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 min-w-0 flex-1">
                 <span
-                  className={`text-[10px] font-bold legal-mono px-2 py-0.5 rounded-md border ${
+                  className={`text-[10px] font-bold legal-mono px-2 py-0.5 rounded-md border shrink-0 ${
                     clause.riskLevel === 'CRITICAL'
                       ? 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)] border-[var(--diff-del-border)]'
                       : clause.riskLevel === 'HIGH'
@@ -99,18 +99,18 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
                   {clause.riskLevel} RISK
                 </span>
 
-                <h4 className="text-sm font-bold text-[var(--text-primary)]">
+                <h4 className="text-sm font-bold text-[var(--text-primary)] break-words leading-tight">
                   {clause.sectionNumber ? `${clause.sectionNumber}: ` : ''}
                   {clause.title}
                 </h4>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center space-x-2 self-end sm:self-auto">
+              <div className="flex items-center space-x-2 self-start sm:self-auto flex-wrap gap-y-1.5 shrink-0">
                 <button
                   type="button"
                   onClick={() => onInspectClause(clause)}
-                  className="text-xs px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)] transition-all flex items-center space-x-1"
+                  className="text-xs px-2.5 py-1.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)] transition-all flex items-center space-x-1 cursor-pointer"
                 >
                   <Info className="w-3 h-3 text-[var(--brand)]" />
                   <span>Why This Matters</span>
@@ -119,7 +119,7 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
                 <button
                   type="button"
                   onClick={() => onToggleAccept(clause.id)}
-                  className={`text-xs px-3 py-1 rounded-lg font-semibold transition-all flex items-center space-x-1 shadow-xs ${
+                  className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-all flex items-center space-x-1 shadow-xs cursor-pointer ${
                     clause.isAccepted
                       ? 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)] border border-[var(--diff-ins-border)]'
                       : 'bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -169,43 +169,57 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
               </div>
             </div>
 
-            {/* Progressive Disclosure: Accordion for Lawyer/Judge Legal Diff */}
+            {/* Progressive Disclosure: Accordion for Lawyer/Judge Legal Diff & Rationale */}
             <div className="mt-4 pt-3 border-t border-[var(--border-default)]">
               <button
                 type="button"
                 onClick={() => toggleExpand(clause.id)}
                 aria-expanded={isExpanded}
                 aria-controls={`diff-${clause.id}`}
-                className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center space-x-1 font-semibold transition-colors"
+                className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center space-x-1 font-semibold transition-colors cursor-pointer"
               >
                 <span>{isExpanded ? 'Hide legal wording & redline diff' : 'Show legal wording & redline diff'}</span>
                 {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
               </button>
 
               {isExpanded && (
-                <div id={`diff-${clause.id}`} className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-150">
-                  {/* Original Legal Clause */}
-                  <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-base)] p-3.5">
-                    <div className="text-[10px] uppercase font-bold text-[var(--text-muted)] mb-1.5">
-                      Incoming Contract Wording
+                <div id={`diff-${clause.id}`} className="mt-3 space-y-3 animate-in fade-in duration-150">
+                  {/* Embedded Legal Context & Leverage Box */}
+                  <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-subtle)]/40 p-3 text-xs">
+                    <div className="flex items-center space-x-1.5 font-bold text-[var(--text-primary)] mb-1">
+                      <Scale className="w-3.5 h-3.5 text-[var(--brand)]" />
+                      <span>Negotiation Leverage Point ({clause.standardReference})</span>
                     </div>
-                    <div className="text-xs legal-serif text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap">
-                      {clause.originalText}
-                    </div>
+                    <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                      Remind the vendor that Common Paper standard terms reflect balanced market consensus adopted by thousands of technology companies. Asking for mutual liability caps and standard renewal windows is standard enterprise hygiene, not an aggressive pushback.
+                    </p>
                   </div>
 
-                  {/* Redline Diff */}
-                  <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-base)] p-3.5">
-                    <div className="text-[10px] uppercase font-bold text-[var(--diff-ins-text)] mb-1.5">
-                      Proposed Redline (Common Paper)
-                    </div>
-                    {clause.isAccepted && clause.proposedFallback !== clause.originalText ? (
-                      renderDiffText(clause.originalText, clause.proposedFallback)
-                    ) : (
-                      <div className="text-xs legal-serif text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap">
+                  {/* Side-by-Side Wording Comparison */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {/* Original Legal Clause */}
+                    <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-base)] p-3.5 overflow-hidden">
+                      <div className="text-[10px] uppercase font-bold text-[var(--text-muted)] mb-1.5">
+                        Incoming Contract Wording
+                      </div>
+                      <div className="text-xs legal-serif text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap break-words">
                         {clause.originalText}
                       </div>
-                    )}
+                    </div>
+
+                    {/* Redline Diff */}
+                    <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-base)] p-3.5 overflow-hidden">
+                      <div className="text-[10px] uppercase font-bold text-[var(--diff-ins-text)] mb-1.5">
+                        Proposed Redline (Common Paper)
+                      </div>
+                      {clause.isAccepted && clause.proposedFallback !== clause.originalText ? (
+                        renderDiffText(clause.originalText, clause.proposedFallback)
+                      ) : (
+                        <div className="text-xs legal-serif text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap break-words">
+                          {clause.originalText}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}

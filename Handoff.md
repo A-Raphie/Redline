@@ -1,4 +1,4 @@
-# Redline — Project Handoff & Current State
+# Redline: Project Handoff & Current State
 
 ## Current State (2026-09-14)
 - **Status:** Full functional implementation, Warm Paper UI, comprehensive README, timed demo script, and Devpost submission ready.
