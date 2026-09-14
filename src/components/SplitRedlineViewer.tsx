@@ -63,12 +63,12 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between px-1">
+    <div className="space-y-4 min-w-0 max-w-full">
+      <div className="flex flex-wrap items-center justify-between gap-1 px-1">
         <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
           Contract Clauses ({filteredClauses.length})
         </h3>
-        <span className="text-[11px] text-[var(--text-muted)]">
+        <span className="text-[11px] text-[var(--text-muted)] hidden sm:inline">
           Plain-English breakdown with 1-click standard fixes
         </span>
       </div>
@@ -80,12 +80,12 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
         return (
           <div
             key={clause.id}
-            className={`paper-card p-4 sm:p-5 transition-all shadow-xs ${
+            className={`paper-card p-4 sm:p-5 transition-all shadow-xs min-w-0 max-w-full overflow-hidden ${
               isPredatory ? 'border-l-4 border-l-[var(--diff-del-border)]' : 'border-l-4 border-l-[var(--diff-ins-border)]'
             }`}
           >
             {/* Header with Title and 1-Click Fix Button */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-default)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-default)] min-w-0 w-full">
               <div className="flex items-center space-x-2 min-w-0 flex-1">
                 <span
                   className={`text-[10px] font-bold legal-mono px-2 py-0.5 rounded-md border shrink-0 ${

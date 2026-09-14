@@ -104,7 +104,7 @@ export default function Home() {
   const acceptedCount = report ? report.clauses.filter((c) => c.isAccepted).length : 0;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg-base)]">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-base)] min-w-0 max-w-full overflow-x-hidden">
       {/* Clean Sticky Header */}
       <Header
         currentStandard={currentStandard}
@@ -116,8 +116,8 @@ export default function Home() {
       />
 
       {/* Clean, Human-Friendly Hero */}
-      <section className="border-b border-[var(--border-default)] bg-[var(--bg-surface)] py-12 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="border-b border-[var(--border-default)] bg-[var(--bg-surface)] py-10 sm:py-12 px-4 sm:px-6 min-w-0 max-w-full overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center min-w-0 w-full">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[var(--bg-subtle)] border border-[var(--border-default)] text-xs font-semibold text-[var(--text-secondary)] mb-4">
             <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
             <span>Open-Standard Contract Safety Engine</span>
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Main Interactive Workbench */}
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 min-w-0 max-w-full">
         {/* Compact Preset & Ingestion Dropzone */}
         <ContractDropzone
           onContractLoaded={handleContractLoaded}
@@ -161,7 +161,7 @@ export default function Home() {
             />
 
             {/* Sticky Action Bottom Bar */}
-            <div className="sticky bottom-4 mt-8 p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-strong)] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="sticky bottom-4 mt-8 p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-strong)] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3 min-w-0 max-w-full">
               <div className="flex items-center space-x-2 text-xs text-[var(--text-primary)] text-center sm:text-left">
                 <CheckCircle2 className="w-4 h-4 text-[var(--diff-ins-text)] shrink-0" />
                 <span className="font-semibold">
@@ -211,7 +211,7 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-[var(--border-default)] bg-[var(--bg-surface)] py-6 px-4 sm:px-6 mt-12 text-xs text-[var(--text-secondary)]">
+      <footer className="border-t border-[var(--border-default)] bg-[var(--bg-surface)] py-6 px-4 sm:px-6 mt-12 text-xs text-[var(--text-secondary)] min-w-0 max-w-full overflow-hidden">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2 text-center sm:text-left">
             <Scale className="w-4 h-4 text-[var(--brand)] shrink-0" />

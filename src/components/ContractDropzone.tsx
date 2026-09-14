@@ -58,10 +58,10 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
   };
 
   return (
-    <div className="paper-card p-4 mb-6 shadow-xs">
+    <div className="paper-card p-4 mb-6 shadow-xs min-w-0 max-w-full overflow-hidden">
       {/* Sleek, Compact Preset Selector Row */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center space-x-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none max-w-full">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0 w-full">
+        <div className="flex items-center space-x-2 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none min-w-0 w-full max-w-full">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)] shrink-0 flex items-center mr-1">
             <Sparkles className="w-3.5 h-3.5 mr-1 text-[var(--accent-gold)] shrink-0" />
             Presets:

@@ -22,9 +22,9 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
   const someAccepted = report.clauses.some((c) => c.isAccepted);
 
   return (
-    <div className="paper-card p-4 sm:p-5 mb-8 shadow-xs">
+    <div className="paper-card p-4 sm:p-5 mb-8 shadow-xs min-w-0 max-w-full overflow-hidden">
       {/* Top Reassuring Verdict */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border-default)]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border-default)] min-w-0 w-full">
         <div className="flex items-start sm:items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
           {/* Grade Stamp */}
           <div
