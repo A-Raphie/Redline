@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { Upload, FileText, Clipboard, CheckCircle, Sparkles, ArrowRight } from 'lucide-react';
+import { Upload, Clipboard, Sparkles, ArrowRight, AlertCircle, FileCheck } from 'lucide-react';
 import { SAMPLE_CONTRACTS } from '../lib/standards/sampleContracts';
 import { parseDocumentFile, parsePlainText } from '../lib/parser/docxParser';
 
@@ -14,7 +14,7 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
   onContractLoaded,
   onSelectSample,
 }) => {
-  const [activeTab, setActiveTab] = useState<'upload' | 'paste' | 'samples'>('samples');
+  const [activeTab, setActiveTab] = useState<'samples' | 'upload' | 'paste'>('samples');
   const [pastedText, setPastedText] = useState('');
   const [contractTitle, setContractTitle] = useState('');
   const [isDragging, setIsDragging] = useState(false);
@@ -53,16 +53,16 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
   };
 
   return (
-    <div className="bg-[var(--panel)] border border-[var(--line)] rounded-xl overflow-hidden shadow-lg mb-8">
+    <div className="paper-card overflow-hidden mb-8">
       {/* Tab Navigation */}
-      <div className="flex border-b border-[var(--line)] bg-[var(--background)]/50 px-4 pt-3 space-x-2">
+      <div className="flex border-b border-[var(--border-default)] bg-[var(--bg-subtle)]/70 px-4 pt-3 space-x-2">
         <button
           type="button"
           onClick={() => setActiveTab('samples')}
-          className={`px-4 py-2 text-xs font-medium rounded-t-lg transition-colors flex items-center space-x-1.5 ${
+          className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all flex items-center space-x-1.5 ${
             activeTab === 'samples'
-              ? 'bg-[var(--panel)] text-[var(--ink)] border-t border-x border-[var(--line)] font-semibold text-[var(--accent-gold)]'
-              : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+              ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-t border-x border-[var(--border-default)] shadow-xs'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
           }`}
         >
           <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
@@ -72,10 +72,10 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
         <button
           type="button"
           onClick={() => setActiveTab('upload')}
-          className={`px-4 py-2 text-xs font-medium rounded-t-lg transition-colors flex items-center space-x-1.5 ${
+          className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all flex items-center space-x-1.5 ${
             activeTab === 'upload'
-              ? 'bg-[var(--panel)] text-[var(--ink)] border-t border-x border-[var(--line)] font-semibold'
-              : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+              ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-t border-x border-[var(--border-default)] shadow-xs'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
           }`}
         >
           <Upload className="w-3.5 h-3.5" />
@@ -85,10 +85,10 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
         <button
           type="button"
           onClick={() => setActiveTab('paste')}
-          className={`px-4 py-2 text-xs font-medium rounded-t-lg transition-colors flex items-center space-x-1.5 ${
+          className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all flex items-center space-x-1.5 ${
             activeTab === 'paste'
-              ? 'bg-[var(--panel)] text-[var(--ink)] border-t border-x border-[var(--line)] font-semibold'
-              : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+              ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-t border-x border-[var(--border-default)] shadow-xs'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
           }`}
         >
           <Clipboard className="w-3.5 h-3.5" />
@@ -101,12 +101,12 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
         {activeTab === 'samples' && (
           <div>
             <div className="mb-4">
-              <h3 className="text-sm font-semibold text-[var(--ink)] flex items-center">
+              <h3 className="text-sm font-bold text-[var(--text-primary)] flex items-center">
                 <Sparkles className="w-4 h-4 mr-1.5 text-[var(--accent-gold)]" />
                 Select a Real-World Predatory Benchmark Contract
               </h3>
-              <p className="text-xs text-[var(--ink-secondary)] mt-0.5">
-                Pre-loaded contracts engineered with classic vendor traps to verify the Redline audit engine in under 90 seconds.
+              <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+                Pre-loaded contracts engineered with standard vendor traps to verify the Redline audit engine in under 90 seconds.
               </p>
             </div>
 
@@ -115,28 +115,28 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
                 <div
                   key={sample.id}
                   onClick={() => onSelectSample(sample.id)}
-                  className="group bg-[var(--surface)] hover:bg-[var(--surface-hover)] border border-[var(--line)] hover:border-[var(--accent-gold)] rounded-lg p-4 cursor-pointer transition-all flex flex-col justify-between"
+                  className="group bg-[var(--bg-surface)] hover:bg-[var(--bg-subtle)]/50 border border-[var(--border-default)] hover:border-[var(--border-strong)] rounded-xl p-4 cursor-pointer transition-all flex flex-col justify-between shadow-xs hover:shadow-sm"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-[var(--background)] text-[var(--accent-gold)] border border-[var(--line)]">
+                      <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-[var(--bg-subtle)] text-[var(--text-primary)] border border-[var(--border-default)] legal-mono">
                         {sample.type.replace('_', ' ')}
                       </span>
-                      <span className="text-[10px] text-red-400 font-mono font-medium">
+                      <span className="text-[11px] text-[var(--diff-del-text)] font-semibold legal-mono">
                         {sample.predatorySummary.split('·')[0].trim()}
                       </span>
                     </div>
-                    <h4 className="text-xs font-semibold text-[var(--ink)] group-hover:text-[var(--accent-gold)] transition-colors leading-snug mb-2">
+                    <h4 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--brand)] transition-colors leading-snug mb-2">
                       {sample.title}
                     </h4>
-                    <p className="text-[11px] text-[var(--ink-secondary)] line-clamp-3 leading-relaxed mb-3">
+                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-3 leading-relaxed mb-3">
                       {sample.description}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-[var(--line)] flex items-center justify-between text-xs text-[var(--accent-gold)] font-medium">
+                  <div className="pt-3 border-t border-[var(--border-default)] flex items-center justify-between text-xs text-[var(--brand)] font-semibold">
                     <span>Audit this agreement</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               ))}
@@ -155,10 +155,10 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
               onDragLeave={() => setIsDragging(false)}
               onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
-              className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all ${
+              className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
                 isDragging
-                  ? 'border-[var(--accent-gold)] bg-[var(--accent-gold-dim)]'
-                  : 'border-[var(--line-highlight)] hover:border-[var(--accent-gold)] bg-[var(--surface)]/50'
+                  ? 'border-[var(--brand)] bg-[var(--brand-subtle)]'
+                  : 'border-[var(--border-strong)] hover:border-[var(--brand)] bg-[var(--bg-subtle)]/30'
               }`}
             >
               <input
@@ -173,17 +173,17 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
                 }}
               />
               <div className="max-w-md mx-auto flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center text-[var(--accent-gold)] mb-3">
-                  <Upload className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-full bg-[var(--bg-surface)] border border-[var(--border-default)] flex items-center justify-center text-[var(--brand)] mb-3 shadow-xs">
+                  <Upload className="w-5 h-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[var(--ink)] mb-1">
+                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-1">
                   {isProcessing ? 'Parsing Document AST...' : 'Drop your Word (.docx) or Text (.txt) contract here'}
                 </h4>
-                <p className="text-xs text-[var(--ink-muted)] mb-3">
-                  Parsed entirely client-side. Zero document data is stored on remote servers.
+                <p className="text-xs text-[var(--text-muted)] mb-3">
+                  Parsed entirely client-side. Zero document data is sent to external servers.
                 </p>
-                <span className="text-xs font-medium px-3 py-1.5 rounded-md bg-[var(--surface)] border border-[var(--line)] text-[var(--ink-secondary)] hover:text-[var(--ink)]">
-                  Browse Files
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] shadow-xs">
+                  Browse Local Files
                 </span>
               </div>
             </div>
@@ -194,7 +194,7 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
         {activeTab === 'paste' && (
           <div className="space-y-3">
             <div>
-              <label className="block text-xs font-medium text-[var(--ink-secondary)] mb-1">
+              <label className="block text-xs font-semibold text-[var(--text-secondary)] mb-1">
                 Agreement Title (Optional)
               </label>
               <input
@@ -202,11 +202,11 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
                 value={contractTitle}
                 onChange={(e) => setContractTitle(e.target.value)}
                 placeholder="e.g. Master Subscription Agreement with Acme Corp"
-                className="w-full text-xs px-3 py-2 rounded-md bg-[var(--background)] border border-[var(--line)] text-[var(--ink)] focus:outline-none focus:border-[var(--accent-gold)]"
+                className="w-full text-xs px-3 py-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--brand)] shadow-xs"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[var(--ink-secondary)] mb-1">
+              <label className="block text-xs font-semibold text-[var(--text-secondary)] mb-1">
                 Contract Clauses / Agreement Body
               </label>
               <textarea
@@ -214,16 +214,16 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
                 value={pastedText}
                 onChange={(e) => setPastedText(e.target.value)}
                 placeholder="Paste contract clauses here (e.g. SECTION 9. LIMITATION OF LIABILITY...)"
-                className="w-full text-xs font-mono p-3 rounded-md bg-[var(--background)] border border-[var(--line)] text-[var(--ink)] focus:outline-none focus:border-[var(--accent-gold)] leading-relaxed"
+                className="w-full text-xs legal-mono p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--brand)] leading-relaxed shadow-xs"
               />
             </div>
             <div className="flex justify-end">
               <button
                 type="button"
                 onClick={handlePasteSubmit}
-                className="px-4 py-2 rounded-md text-xs font-medium bg-[var(--accent-gold)] text-[#0b0f17] hover:bg-[var(--accent-gold-hover)] transition-all flex items-center space-x-1.5"
+                className="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90 transition-all flex items-center space-x-1.5 shadow-sm"
               >
-                <span>Audit & Segment Clauses</span>
+                <span>Audit &amp; Segment Clauses</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -231,8 +231,9 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
         )}
 
         {error && (
-          <div className="mt-4 p-3 rounded-md bg-red-900/20 border border-red-500/30 text-xs text-red-300 flex items-center">
-            {error}
+          <div className="mt-4 p-3 rounded-lg bg-[var(--diff-del-bg)] border border-[var(--diff-del-border)] text-xs text-[var(--diff-del-text)] flex items-center font-medium">
+            <AlertCircle className="w-4 h-4 mr-2 shrink-0" />
+            <span>{error}</span>
           </div>
         )}
       </div>

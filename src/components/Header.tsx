@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FileText, ShieldCheck, Download, Sparkles, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Download, Sparkles, Scale } from 'lucide-react';
 import { SAMPLE_CONTRACTS } from '../lib/standards/sampleContracts';
 
 interface HeaderProps {
@@ -22,23 +22,23 @@ export const Header: React.FC<HeaderProps> = ({
   activeSampleId,
 }) => {
   return (
-    <header className="border-b border-[var(--line)] bg-[var(--panel)]/95 backdrop-blur sticky top-0 z-40">
+    <header className="border-b border-[var(--border-default)] bg-[var(--bg-surface)]/95 backdrop-blur sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded border border-[var(--accent-gold)] flex items-center justify-center bg-[var(--accent-gold-dim)] text-[var(--accent-gold)] font-bold legal-mono text-sm tracking-tighter">
+            <div className="w-8 h-8 rounded-lg bg-[var(--brand)] text-[var(--accent-foreground)] flex items-center justify-center font-bold legal-mono text-xs tracking-wider shadow-sm">
               RL
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-semibold tracking-wider text-sm legal-mono text-[var(--ink)]">REDLINE</span>
-                <span className="text-xs px-1.5 py-0.5 rounded bg-[var(--line)] text-[var(--ink-secondary)] legal-mono">
+                <span className="font-semibold tracking-wide text-sm legal-mono text-[var(--text-primary)]">REDLINE</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--bg-subtle)] text-[var(--text-secondary)] border border-[var(--border-default)] legal-mono font-medium">
                   LEXHACK 2026
                 </span>
               </div>
-              <p className="text-[10px] text-[var(--ink-muted)] hidden sm:block">
-                Open-Standard Contract Audit & Native Tracked Revisions
+              <p className="text-[11px] text-[var(--text-muted)] hidden sm:block">
+                Open-Standard Contract Audit & Native Word Tracked Changes
               </p>
             </div>
           </div>
@@ -46,14 +46,14 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Standards & Preset Quick Bar */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Standard Benchmark Selector */}
-            <div className="flex items-center bg-[var(--background)] border border-[var(--line)] rounded-md p-0.5 text-xs">
+            <div className="flex items-center bg-[var(--bg-subtle)] border border-[var(--border-default)] rounded-lg p-0.5 text-xs">
               <button
                 type="button"
                 onClick={() => onStandardChange('SAAS_CSA')}
-                className={`px-2.5 py-1 rounded transition-colors ${
+                className={`px-2.5 py-1 rounded-md transition-all ${
                   currentStandard === 'SAAS_CSA'
-                    ? 'bg-[var(--surface-hover)] text-[var(--ink)] font-medium border border-[var(--line-highlight)]'
-                    : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+                    ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] font-semibold shadow-xs border border-[var(--border-strong)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 Common Paper CSA
@@ -61,10 +61,10 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={() => onStandardChange('MUTUAL_NDA')}
-                className={`px-2.5 py-1 rounded transition-colors ${
+                className={`px-2.5 py-1 rounded-md transition-all ${
                   currentStandard === 'MUTUAL_NDA'
-                    ? 'bg-[var(--surface-hover)] text-[var(--ink)] font-medium border border-[var(--line-highlight)]'
-                    : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+                    ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] font-semibold shadow-xs border border-[var(--border-strong)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 Mutual NDA
@@ -72,20 +72,20 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* 90-Second Judge Presets */}
-            <div className="hidden md:flex items-center space-x-1 pl-2 border-l border-[var(--line)]">
-              <span className="text-[11px] text-[var(--accent-gold)] flex items-center mr-1 font-medium">
+            <div className="hidden md:flex items-center space-x-1.5 pl-3 border-l border-[var(--border-default)]">
+              <span className="text-[11px] text-[var(--accent-gold)] flex items-center mr-1 font-semibold uppercase tracking-wider">
                 <Sparkles className="w-3 h-3 mr-1" />
-                Judge Test:
+                Judge Preset:
               </span>
               {SAMPLE_CONTRACTS.map((sample) => (
                 <button
                   key={sample.id}
                   type="button"
                   onClick={() => onSelectSample(sample.id)}
-                  className={`text-xs px-2 py-1 rounded transition-all truncate max-w-[130px] border ${
+                  className={`text-xs px-2.5 py-1 rounded-md transition-all border ${
                     activeSampleId === sample.id
-                      ? 'bg-[var(--accent-gold-dim)] text-[var(--accent-gold)] border-[var(--accent-gold)] font-medium'
-                      : 'bg-[var(--surface)] text-[var(--ink-secondary)] border-[var(--line)] hover:border-[var(--line-highlight)] hover:text-[var(--ink)]'
+                      ? 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)] border-[var(--diff-del-border)] font-semibold shadow-xs'
+                      : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border-[var(--border-default)] hover:border-[var(--border-strong)] hover:text-[var(--text-primary)]'
                   }`}
                   title={sample.title}
                 >
@@ -99,10 +99,10 @@ export const Header: React.FC<HeaderProps> = ({
               type="button"
               onClick={onOpenExport}
               disabled={!hasDocument}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 hasDocument
-                  ? 'bg-[var(--accent-gold)] text-[#0b0f17] hover:bg-[var(--accent-gold-hover)] shadow-sm'
-                  : 'bg-[var(--surface)] text-[var(--ink-muted)] cursor-not-allowed border border-[var(--line)]'
+                  ? 'bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90 shadow-sm'
+                  : 'bg-[var(--bg-subtle)] text-[var(--text-muted)] cursor-not-allowed border border-[var(--border-default)]'
               }`}
             >
               <Download className="w-3.5 h-3.5" />
@@ -113,18 +113,18 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Trust & Privacy Sub-banner */}
-      <div className="bg-[var(--background)]/80 border-t border-[var(--line)]/50 px-4 py-1 text-[11px] text-[var(--ink-muted)] flex items-center justify-between">
+      <div className="bg-[var(--bg-subtle)]/70 border-t border-[var(--border-default)] px-4 py-1 text-[11px] text-[var(--text-secondary)] flex items-center justify-between">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <span className="flex items-center text-emerald-400/90">
-              <ShieldCheck className="w-3 h-3 mr-1" />
+            <span className="flex items-center text-[var(--diff-ins-text)] font-medium">
+              <ShieldCheck className="w-3.5 h-3.5 mr-1" />
               100% Client-Side Privacy: Contracts never leave your browser
             </span>
-            <span className="hidden sm:inline text-[var(--line-highlight)]">•</span>
-            <span className="hidden sm:inline">Benchmarked against Common Paper Committee Standards (MIT)</span>
+            <span className="hidden sm:inline text-[var(--border-strong)]">•</span>
+            <span className="hidden sm:inline text-[var(--text-muted)]">Benchmarked against Common Paper Committee Standards (MIT)</span>
           </div>
-          <div className="text-[10px] text-[var(--ink-muted)] legal-mono">
-            Native Word &lt;w:ins&gt; & &lt;w:del&gt; Revisions
+          <div className="text-[10px] text-[var(--text-muted)] legal-mono">
+            Native Word &lt;w:ins&gt; &amp; &lt;w:del&gt; Revisions
           </div>
         </div>
       </div>

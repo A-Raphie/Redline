@@ -1,48 +1,106 @@
 @import "tailwindcss";
 
+/* 
+ * Redline Semantic Design Tokens
+ * Grammar: winsznx/closeout (Closure Ledger / Warm Paper)
+ * Reference: internal/brand/brand.json in winsznx/closeout
+ */
+
 :root {
-  /* Canvas & Surfaces */
-  --background: #080c14;
-  --panel: #0e1422;
-  --surface: #141c2e;
-  --surface-hover: #1c273e;
-  --line: #212c42;
-  --line-highlight: #3b4d70;
+  /* Elevation ladder — base < surface < subtle < overlay */
+  --bg-base: #F5F1E8;             /* Warm linen paper canvas */
+  --bg-surface: #FFFEFB;          /* Crisp off-white card surface */
+  --bg-subtle: #EEE8DE;           /* Muted hover & inset surface */
+  --bg-surface-strong: #E4DDD1;   /* Container & table header */
+  --bg-overlay: #FFFFFF;          /* Modals, popovers, drawers */
 
-  /* Typography */
-  --ink: #f8fafc;
-  --ink-secondary: #94a3b8;
-  --ink-muted: #64748b;
+  /* Text tiers — exactly three */
+  --text-primary: #1C1B1A;        /* Rich carbon black ink */
+  --text-secondary: #55504A;      /* Warm slate secondary text */
+  --text-muted: #7C756D;          /* Stone muted metadata */
 
-  /* Redline Diff Tokens */
-  --diff-del-bg: rgba(239, 68, 68, 0.14);
-  --diff-del-text: #fca5a5;
-  --diff-del-border: rgba(239, 68, 68, 0.35);
+  /* Border scale — crisp paper lines */
+  --border-default: #D8D0C4;      /* Hairline ledger border */
+  --border-strong: #BEB4A7;       /* Hover / active boundary */
 
-  --diff-ins-bg: rgba(34, 197, 94, 0.14);
-  --diff-ins-text: #86efac;
-  --diff-ins-border: rgba(34, 197, 94, 0.35);
+  /* Brand slate & accent */
+  --brand: #382F42;               /* Deep aubergine/slate */
+  --brand-strong: #2B2433;        /* Deepest aubergine */
+  --brand-subtle: #F0ECF4;        /* Soft aubergine tint */
+  --accent: #1C1B1A;              /* Primary action ink */
+  --accent-foreground: #FFFEFB;   /* Card off-white on accent */
 
-  --accent-gold: #e2b366;
-  --accent-gold-hover: #f3c780;
-  --accent-gold-dim: rgba(226, 179, 102, 0.12);
+  /* Amber / Gold accent */
+  --accent-gold: #B67A24;
+  --accent-gold-subtle: #F7EEDB;
+  --accent-gold-strong: #8C5D17;
 
-  --risk-critical: #ef4444;
-  --risk-high: #f59e0b;
-  --risk-medium: #3b82f6;
-  --risk-low: #10b981;
+  /* Redline Diff Tokens — Terracotta (del/trap) and Forest (ins/remedy) */
+  --diff-del-bg: #FAE3DA;
+  --diff-del-text: #B83E23;
+  --diff-del-border: #E76545;
+
+  --diff-ins-bg: #E1F0E8;
+  --diff-ins-text: #1D5C43;
+  --diff-ins-border: #2F7A5D;
+
+  /* Risk Scale (desaturated semantic pairs + labels) */
+  --risk-critical: #B83E23;
+  --risk-critical-bg: #FAE3DA;
+  --risk-critical-border: #E76545;
+
+  --risk-high: #945C10;
+  --risk-high-bg: #F7EEDB;
+  --risk-high-border: #B67A24;
+
+  --risk-medium: #275570;
+  --risk-medium-bg: #E3EDF2;
+  --risk-medium-border: #3A6B88;
+
+  --risk-low: #1D5C43;
+  --risk-low-bg: #E1F0E8;
+  --risk-low-border: #2F7A5D;
+
+  /* Geometry & Radii */
+  --radius-input: 8px;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+
+  /* Paper Shadows */
+  --shadow-sm: 0 1px 2px rgba(28, 27, 26, 0.05);
+  --shadow-card: 0 1px 3px rgba(28, 27, 26, 0.05), 0 8px 24px rgba(28, 27, 26, 0.04);
+  --shadow-overlay: 0 8px 32px rgba(28, 27, 26, 0.12), 0 2px 8px rgba(28, 27, 26, 0.06);
+
+  /* Typography Stacks */
+  --font-sans: 'Instrument Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-panel: var(--panel);
-  --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
-  --color-line: var(--line);
-  --color-line-highlight: var(--line-highlight);
-  --color-ink: var(--ink);
-  --color-ink-secondary: var(--ink-secondary);
-  --color-ink-muted: var(--ink-muted);
+  --color-background: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-surface-subtle: var(--bg-subtle);
+  --color-surface-strong: var(--bg-surface-strong);
+  --color-overlay: var(--bg-overlay);
+
+  --color-line: var(--border-default);
+  --color-line-highlight: var(--border-strong);
+  --color-border: var(--border-default);
+  --color-border-strong: var(--border-strong);
+
+  --color-ink: var(--text-primary);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-subtle: var(--brand-subtle);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-subtle: var(--accent-gold-subtle);
 
   --color-diff-del-bg: var(--diff-del-bg);
   --color-diff-del-text: var(--diff-del-text);
@@ -52,44 +110,71 @@
   --color-diff-ins-text: var(--diff-ins-text);
   --color-diff-ins-border: var(--diff-ins-border);
 
-  --color-accent-gold: var(--accent-gold);
-  --color-accent-gold-hover: var(--accent-gold-hover);
-  --color-accent-gold-dim: var(--accent-gold-dim);
-
   --color-risk-critical: var(--risk-critical);
+  --color-risk-critical-bg: var(--risk-critical-bg);
   --color-risk-high: var(--risk-high);
+  --color-risk-high-bg: var(--risk-high-bg);
   --color-risk-medium: var(--risk-medium);
+  --color-risk-medium-bg: var(--risk-medium-bg);
   --color-risk-low: var(--risk-low);
+  --color-risk-low-bg: var(--risk-low-bg);
 }
 
 body {
-  background-color: var(--background);
-  color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar for dense legal text */
+/* Warm Paper Card Container */
+.paper-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.paper-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+}
+
+/* Tabular Numbers for risk metrics, scores, clause counts */
+.tabular-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.number-lg {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Legal Document Typography */
+.legal-serif {
+  font-family: var(--font-serif);
+}
+
+.legal-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--bg-subtle);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--line);
+  background: var(--border-strong);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--line-highlight);
-}
-
-/* Legal Document Styling */
-.legal-serif {
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-}
-
-.legal-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: var(--text-muted);
 }

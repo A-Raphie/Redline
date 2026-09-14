@@ -1,10 +1,25 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'REDLINE // Open-Standard B2B Contract Audit & Redline Engine',
+  title: 'Redline — Open-Standard B2B Contract Audit & Tracked Redlines',
   description:
-    'Audit incoming contracts against open-standard legal frameworks (Common Paper & Bonterms). Detect predatory liability and renewal traps, and export attorney-grade .docx with native Word tracked changes.',
+    'Audit incoming contracts against open-standard legal frameworks (Common Paper & Bonterms). Detect predatory liability caps and renewal traps, and export attorney-grade .docx with native Word tracked changes.',
+  keywords: [
+    'contract review',
+    'Common Paper',
+    'Bonterms',
+    'legal tech',
+    'contract redlining',
+    'Word tracked changes',
+    'SaaS MSA',
+    'liability cap audit',
+  ],
+  authors: [{ name: 'Redline Team (LexHack 2026)' }],
+};
+
+export const viewport: Viewport = {
+  themeColor: '#F5F1E8',
 };
 
 export default function RootLayout({
@@ -13,8 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen bg-[var(--background)] text-[var(--ink)] antialiased selection:bg-[var(--accent-gold-dim)] selection:text-[var(--accent-gold)]">
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] antialiased selection:bg-[var(--diff-ins-bg)] selection:text-[var(--diff-ins-text)]">
         {children}
       </body>
     </html>
