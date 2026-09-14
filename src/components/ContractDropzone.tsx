@@ -1,20 +1,23 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { Upload, Clipboard, Sparkles, ArrowRight, AlertCircle, FileCheck } from 'lucide-react';
+import { Upload, Clipboard, Sparkles, ArrowRight, FileText, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react';
 import { SAMPLE_CONTRACTS } from '../lib/standards/sampleContracts';
 import { parseDocumentFile, parsePlainText } from '../lib/parser/docxParser';
 
 interface ContractDropzoneProps {
   onContractLoaded: (title: string, rawText: string) => void;
   onSelectSample: (sampleId: string) => void;
+  activeSampleId?: string;
 }
 
 export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
   onContractLoaded,
   onSelectSample,
+  activeSampleId,
 }) => {
-  const [activeTab, setActiveTab] = useState<'samples' | 'upload' | 'paste'>('samples');
+  const [showCustomUpload, setShowCustomUpload] = useState(false);
+  const [activeTab, setActiveTab] = useState<'upload' | 'paste'>('upload');
   const [pastedText, setPastedText] = useState('');
   const [contractTitle, setContractTitle] = useState('');
   const [isDragging, setIsDragging] = useState(false);
@@ -28,6 +31,7 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
     try {
       const parsed = await parseDocumentFile(file);
       onContractLoaded(parsed.title, parsed.rawText);
+      setShowCustomUpload(false);
     } catch (err: any) {
       setError(err.message || 'Failed to parse file. Please upload a valid .docx or .txt document.');
     } finally {
@@ -45,108 +49,109 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
 
   const handlePasteSubmit = () => {
     if (!pastedText.trim()) {
-      setError('Please enter or paste contract text.');
+      setError('Please paste contract text.');
       return;
     }
-    const parsed = parsePlainText(pastedText, contractTitle.trim() || 'Pasted Agreement');
+    const parsed = parsePlainText(pastedText, contractTitle.trim() || 'Custom Inbound Agreement');
     onContractLoaded(parsed.title, parsed.rawText);
+    setShowCustomUpload(false);
   };
 
   return (
-    <div className="paper-card overflow-hidden mb-8">
-      {/* Tab Navigation */}
-      <div className="flex border-b border-[var(--border-default)] bg-[var(--bg-subtle)]/70 px-4 pt-3 space-x-2">
-        <button
-          type="button"
-          onClick={() => setActiveTab('samples')}
-          className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all flex items-center space-x-1.5 ${
-            activeTab === 'samples'
-              ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-t border-x border-[var(--border-default)] shadow-xs'
-              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-          }`}
-        >
-          <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
-          <span>Benchmark Presets (90s Judge Test)</span>
-        </button>
+    <div className="paper-card p-5 mb-8">
+      {/* 3 Quick Benchmark Contracts */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-primary)] flex items-center">
+            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-[var(--accent-gold)]" />
+            Quick Example Contracts (Click to Test)
+          </h3>
+          <p className="text-[11px] text-[var(--text-muted)]">
+            Pre-loaded agreements featuring standard vendor traps:
+          </p>
+        </div>
 
         <button
           type="button"
-          onClick={() => setActiveTab('upload')}
-          className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all flex items-center space-x-1.5 ${
-            activeTab === 'upload'
-              ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-t border-x border-[var(--border-default)] shadow-xs'
-              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-          }`}
+          onClick={() => setShowCustomUpload(!showCustomUpload)}
+          className="text-xs text-[var(--brand)] hover:underline flex items-center font-semibold self-start sm:self-auto"
         >
-          <Upload className="w-3.5 h-3.5" />
-          <span>Upload .docx / .txt</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab('paste')}
-          className={`px-4 py-2 text-xs font-semibold rounded-t-lg transition-all flex items-center space-x-1.5 ${
-            activeTab === 'paste'
-              ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-t border-x border-[var(--border-default)] shadow-xs'
-              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-          }`}
-        >
-          <Clipboard className="w-3.5 h-3.5" />
-          <span>Paste Agreement Text</span>
+          <span>{showCustomUpload ? 'Hide custom upload' : '+ Upload or paste your own contract'}</span>
+          {showCustomUpload ? <ChevronUp className="w-3.5 h-3.5 ml-1" /> : <ChevronDown className="w-3.5 h-3.5 ml-1" />}
         </button>
       </div>
 
-      <div className="p-6">
-        {/* TAB 1: 90-Second Judge Benchmark Presets */}
-        {activeTab === 'samples' && (
-          <div>
-            <div className="mb-4">
-              <h3 className="text-sm font-bold text-[var(--text-primary)] flex items-center">
-                <Sparkles className="w-4 h-4 mr-1.5 text-[var(--accent-gold)]" />
-                Select a Real-World Predatory Benchmark Contract
-              </h3>
-              <p className="text-xs text-[var(--text-secondary)] mt-0.5">
-                Pre-loaded contracts engineered with standard vendor traps to verify the Redline audit engine in under 90 seconds.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {SAMPLE_CONTRACTS.map((sample) => (
-                <div
-                  key={sample.id}
-                  onClick={() => onSelectSample(sample.id)}
-                  className="group bg-[var(--bg-surface)] hover:bg-[var(--bg-subtle)]/50 border border-[var(--border-default)] hover:border-[var(--border-strong)] rounded-xl p-4 cursor-pointer transition-all flex flex-col justify-between shadow-xs hover:shadow-sm"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded bg-[var(--bg-subtle)] text-[var(--text-primary)] border border-[var(--border-default)] legal-mono">
-                        {sample.type.replace('_', ' ')}
-                      </span>
-                      <span className="text-[11px] text-[var(--diff-del-text)] font-semibold legal-mono">
-                        {sample.predatorySummary.split('·')[0].trim()}
-                      </span>
-                    </div>
-                    <h4 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--brand)] transition-colors leading-snug mb-2">
-                      {sample.title}
-                    </h4>
-                    <p className="text-[11px] text-[var(--text-secondary)] line-clamp-3 leading-relaxed mb-3">
-                      {sample.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-[var(--border-default)] flex items-center justify-between text-xs text-[var(--brand)] font-semibold">
-                    <span>Audit this agreement</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </div>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {SAMPLE_CONTRACTS.map((sample) => {
+          const isActive = activeSampleId === sample.id;
+          return (
+            <button
+              key={sample.id}
+              type="button"
+              onClick={() => onSelectSample(sample.id)}
+              className={`text-left p-3 rounded-xl border transition-all flex flex-col justify-between ${
+                isActive
+                  ? 'bg-[var(--bg-subtle)] border-[var(--border-strong)] shadow-sm ring-1 ring-[var(--brand)]'
+                  : 'bg-[var(--bg-surface)] border-[var(--border-default)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-subtle)]/40 shadow-xs'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-[var(--bg-subtle)] text-[var(--brand)] border border-[var(--border-default)]">
+                    {sample.type === 'SAAS_MSA' ? 'SaaS MSA' : sample.type === 'MUTUAL_NDA' ? 'Mutual NDA' : 'Consulting'}
+                  </span>
+                  {isActive && (
+                    <span className="text-[10px] text-[var(--diff-ins-text)] font-bold flex items-center">
+                      <CheckCircle2 className="w-3 h-3 mr-0.5" /> Active
+                    </span>
+                  )}
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
+                <h4 className="text-xs font-bold text-[var(--text-primary)] leading-tight mb-1">
+                  {sample.title.split('(')[0].trim()}
+                </h4>
+                <p className="text-[11px] text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
+                  {sample.description}
+                </p>
+              </div>
 
-        {/* TAB 2: Upload File */}
-        {activeTab === 'upload' && (
-          <div>
+              <div className="mt-2.5 pt-2 border-t border-[var(--border-default)] text-[10px] text-[var(--diff-del-text)] font-semibold flex items-center justify-between">
+                <span>{sample.predatorySummary.split('·')[0].trim()}</span>
+                <ArrowRight className="w-3 h-3" />
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Expandable Custom Upload Box */}
+      {showCustomUpload && (
+        <div className="mt-4 pt-4 border-t border-[var(--border-default)]">
+          <div className="flex space-x-2 mb-3">
+            <button
+              type="button"
+              onClick={() => setActiveTab('upload')}
+              className={`px-3 py-1 rounded-md text-xs font-semibold ${
+                activeTab === 'upload'
+                  ? 'bg-[var(--brand)] text-[var(--accent-foreground)]'
+                  : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              Upload .docx or .txt
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('paste')}
+              className={`px-3 py-1 rounded-md text-xs font-semibold ${
+                activeTab === 'paste'
+                  ? 'bg-[var(--brand)] text-[var(--accent-foreground)]'
+                  : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              Paste Text
+            </button>
+          </div>
+
+          {activeTab === 'upload' ? (
             <div
               onDragOver={(e) => {
                 e.preventDefault();
@@ -155,7 +160,7 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
               onDragLeave={() => setIsDragging(false)}
               onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
-              className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
+              className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all ${
                 isDragging
                   ? 'border-[var(--brand)] bg-[var(--brand-subtle)]'
                   : 'border-[var(--border-strong)] hover:border-[var(--brand)] bg-[var(--bg-subtle)]/30'
@@ -172,71 +177,49 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
                   }
                 }}
               />
-              <div className="max-w-md mx-auto flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-[var(--bg-surface)] border border-[var(--border-default)] flex items-center justify-center text-[var(--brand)] mb-3 shadow-xs">
-                  <Upload className="w-5 h-5" />
-                </div>
-                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-1">
-                  {isProcessing ? 'Parsing Document AST...' : 'Drop your Word (.docx) or Text (.txt) contract here'}
-                </h4>
-                <p className="text-xs text-[var(--text-muted)] mb-3">
-                  Parsed entirely client-side. Zero document data is sent to external servers.
-                </p>
-                <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] shadow-xs">
-                  Browse Local Files
-                </span>
-              </div>
+              <Upload className="w-6 h-6 text-[var(--brand)] mx-auto mb-2" />
+              <h4 className="text-xs font-bold text-[var(--text-primary)] mb-0.5">
+                {isProcessing ? 'Reading document...' : 'Click to select or drag & drop a Word (.docx) file'}
+              </h4>
+              <p className="text-[11px] text-[var(--text-muted)]">
+                Processed 100% in your browser. Nothing is uploaded to any remote server.
+              </p>
             </div>
-          </div>
-        )}
-
-        {/* TAB 3: Paste Text */}
-        {activeTab === 'paste' && (
-          <div className="space-y-3">
-            <div>
-              <label className="block text-xs font-semibold text-[var(--text-secondary)] mb-1">
-                Agreement Title (Optional)
-              </label>
+          ) : (
+            <div className="space-y-3">
               <input
                 type="text"
                 value={contractTitle}
                 onChange={(e) => setContractTitle(e.target.value)}
-                placeholder="e.g. Master Subscription Agreement with Acme Corp"
-                className="w-full text-xs px-3 py-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--brand)] shadow-xs"
+                placeholder="Contract Name (e.g. Master Services Agreement)"
+                className="w-full text-xs px-3 py-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--brand)]"
               />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-[var(--text-secondary)] mb-1">
-                Contract Clauses / Agreement Body
-              </label>
               <textarea
-                rows={6}
+                rows={5}
                 value={pastedText}
                 onChange={(e) => setPastedText(e.target.value)}
-                placeholder="Paste contract clauses here (e.g. SECTION 9. LIMITATION OF LIABILITY...)"
-                className="w-full text-xs legal-mono p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--brand)] leading-relaxed shadow-xs"
+                placeholder="Paste the contract text here..."
+                className="w-full text-xs font-mono p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--brand)]"
               />
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={handlePasteSubmit}
+                  className="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90"
+                >
+                  Analyze Contract
+                </button>
+              </div>
             </div>
-            <div className="flex justify-end">
-              <button
-                type="button"
-                onClick={handlePasteSubmit}
-                className="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--brand)] text-[var(--accent-foreground)] hover:opacity-90 transition-all flex items-center space-x-1.5 shadow-sm"
-              >
-                <span>Audit &amp; Segment Clauses</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-        )}
+          )}
 
-        {error && (
-          <div className="mt-4 p-3 rounded-lg bg-[var(--diff-del-bg)] border border-[var(--diff-del-border)] text-xs text-[var(--diff-del-text)] flex items-center font-medium">
-            <AlertCircle className="w-4 h-4 mr-2 shrink-0" />
-            <span>{error}</span>
-          </div>
-        )}
-      </div>
+          {error && (
+            <div className="mt-3 p-2.5 rounded-lg bg-[var(--diff-del-bg)] text-xs text-[var(--diff-del-text)] font-medium">
+              {error}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
