@@ -11,12 +11,16 @@
 - **Submission Artifacts:** `README.md`, `demo-script.md`, `SUBMISSION.md` (all 0 em dashes).
 - **Branding & Attribution:** Favicon & Apple icons match the Header Scale icon 1:1; footer includes mandatory `built by Raphie` link (`https://x.com/a_raphie`).
 - **UI & Accessibility Rating:** Nielsen Usability Score: 38/40 (9.5/10) · Zero mobile horizontal overflow (`width=375px`, `scrollWidth=375px`), responsive typography with `text-balance`, and compact chip preset selector.
+- **Landing Page & Product Story:** Hybrid front door architecture combining instant top-fold interactive workbench (for 90-second judge flows) with comprehensive below-the-fold story sections (Workflow, The 4 Vendor Traps, Zero-Trust Privacy Architecture, and Legal FAQ accordion).
 
 ## Features Implemented
-1. **Company-Grade Front Door (`ui-craft` Step 4):**
-   - 10-second stranger orientation with clear 2-sentence value proposition.
-   - Live **Benchmark Proof Bar** comparing predatory traps against Common Paper standards ($100 cap vs 12-month fees, 90-day renewal trap vs 30-day notice, IP data grabs vs customer reservations, 5-year lock-in vs 3-year mutual NDA).
-   - Single primary CTA ("Enter Redline Workbench") + 3 preset test buttons.
+1. **Commercial-Grade Hybrid Front Door (`ui-craft` & `landing-page-design`):**
+   - Immediate top interactive workbench with live presets for 90-second hackathon judging.
+   - **How Redline Works (3-Step Pipeline):** Ingest (.docx & text) -> Benchmark (Common Paper standards) -> Export (Native Word tracked changes).
+   - **The 4 Hidden Traps:** Side-by-side comparison of predatory vendor clauses vs fair standard language (Liability Caps, Auto-Renewal Windows, Telemetry IP Grabs, Unilateral Modifications).
+   - **100% Client-Side Privacy Architecture:** Zero server storage, in-browser AST parsing, zero AI training, and direct browser blob download.
+   - **Interactive Legal FAQ Accordion:** 5 expandable topics covering Common Paper adoption, deterministic standards vs LLM hallucinations, genuine OpenXML `<w:ins>` / `<w:del>` tags, enterprise privacy, and document scope.
+   - Desktop anchor navigation header (`How It Works`, `The 4 Traps`, `Privacy`, `FAQ`).
 2. **Design Tokens & Zero-Raw-Hex Compliance (`semantic-tokens`):**
    - Complete semantic token scale in `globals.css` with 0 raw hexes across all component files.
    - `Instrument Sans` / `Inter` + `IBM Plex Mono` + `Newsreader` / `Georgia` typography stacks.
