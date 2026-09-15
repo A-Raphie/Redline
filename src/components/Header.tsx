@@ -43,6 +43,22 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
+          {/* Nav Anchors for Deep Exploration */}
+          <nav className="hidden lg:flex items-center space-x-5 text-xs text-[var(--text-secondary)] font-medium">
+            <a href="#how-it-works" className="hover:text-[var(--text-primary)] transition-colors">
+              How It Works
+            </a>
+            <a href="#traps" className="hover:text-[var(--text-primary)] transition-colors">
+              The 4 Traps
+            </a>
+            <a href="#privacy" className="hover:text-[var(--text-primary)] transition-colors">
+              Privacy
+            </a>
+            <a href="#faq" className="hover:text-[var(--text-primary)] transition-colors">
+              FAQ
+            </a>
+          </nav>
+
           {/* Controls: Standard selector & Export */}
           <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
             {/* Agreement Type Switcher: Visible on tablet/desktop */}

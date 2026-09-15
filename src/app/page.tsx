@@ -7,6 +7,7 @@ import { RiskSummaryMatrix } from '../components/RiskSummaryMatrix';
 import { SplitRedlineViewer } from '../components/SplitRedlineViewer';
 import { ClauseInspector } from '../components/ClauseInspector';
 import { ExportModal } from '../components/ExportModal';
+import { ProductStorySections } from '../components/ProductStorySections';
 import { SAMPLE_CONTRACTS } from '../lib/standards/sampleContracts';
 import { auditContract } from '../lib/engine/riskAuditor';
 import { AuditReport, Clause, ClauseCategory } from '../lib/types';
@@ -192,6 +193,9 @@ export default function Home() {
             </div>
           </>
         )}
+
+        {/* Below-the-Fold Front Door & Explanatory Sections */}
+        <ProductStorySections />
       </main>
 
       {/* Clause Inspector Drawer */}
