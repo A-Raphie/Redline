@@ -120,6 +120,10 @@
   --color-risk-low-bg: var(--risk-low-bg);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   max-width: 100vw;

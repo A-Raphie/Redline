@@ -18,7 +18,16 @@ export const ClauseInspector: React.FC<ClauseInspectorProps> = ({
   if (!clause) return null;
 
   return (
-    <div className="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-[var(--bg-surface)] border-l border-[var(--border-default)] shadow-2xl z-50 flex flex-col">
+    <>
+      {/* Backdrop overlay */}
+      <div 
+        className="fixed inset-0 bg-black/25 backdrop-blur-[2px] z-50 transition-opacity animate-in fade-in duration-150" 
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* Drawer */}
+      <div className="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-[var(--bg-surface)] border-l border-[var(--border-default)] shadow-2xl z-50 flex flex-col animate-in slide-in-from-right duration-200">
       {/* Header */}
       <div className="p-4 border-b border-[var(--border-default)] flex items-center justify-between bg-[var(--bg-subtle)]/60">
         <div className="flex items-center space-x-2">
@@ -139,5 +148,6 @@ export const ClauseInspector: React.FC<ClauseInspectorProps> = ({
         </button>
       </div>
     </div>
+    </>
   );
 };

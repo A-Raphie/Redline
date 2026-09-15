@@ -13,14 +13,15 @@ import {
   ChevronDown, 
   ChevronUp, 
   Sparkles,
-  EyeOff
+  EyeOff,
+  ArrowRight
 } from 'lucide-react';
 
 export const ProductStorySections: React.FC = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openFaqs, setOpenFaqs] = useState<Record<number, boolean>>({ 0: true });
 
   const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
+    setOpenFaqs(prev => ({ ...prev, [index]: !prev[index] }));
   };
 
   const FAQS = [
@@ -99,7 +100,10 @@ export const ProductStorySections: React.FC = () => {
           <div className="paper-card p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold font-mono text-[var(--brand)]">01 / INGEST</span>
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-bold font-mono text-[var(--brand)]">01 / INGEST</span>
+                  <ArrowRight className="w-3 h-3 text-[var(--text-muted)] hidden md:inline" />
+                </div>
                 <div className="w-8 h-8 rounded-lg bg-[var(--bg-subtle)] flex items-center justify-center text-[var(--brand)] border border-[var(--border-default)]">
                   <FileText className="w-4 h-4" />
                 </div>
@@ -121,7 +125,10 @@ export const ProductStorySections: React.FC = () => {
           <div className="paper-card p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold font-mono text-[var(--accent-gold)]">02 / BENCHMARK</span>
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-bold font-mono text-[var(--accent-gold)]">02 / BENCHMARK</span>
+                  <ArrowRight className="w-3 h-3 text-[var(--text-muted)] hidden md:inline" />
+                </div>
                 <div className="w-8 h-8 rounded-lg bg-[var(--bg-subtle)] flex items-center justify-center text-[var(--accent-gold)] border border-[var(--border-default)]">
                   <Scale className="w-4 h-4" />
                 </div>
@@ -143,7 +150,9 @@ export const ProductStorySections: React.FC = () => {
           <div className="paper-card p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold font-mono text-[var(--diff-ins-text)]">03 / EXPORT</span>
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-bold font-mono text-[var(--diff-ins-text)]">03 / EXPORT</span>
+                </div>
                 <div className="w-8 h-8 rounded-lg bg-[var(--bg-subtle)] flex items-center justify-center text-[var(--diff-ins-text)] border border-[var(--border-default)]">
                   <Download className="w-4 h-4" />
                 </div>
@@ -294,7 +303,7 @@ export const ProductStorySections: React.FC = () => {
 
         <div className="max-w-3xl mx-auto space-y-3">
           {FAQS.map((faq, index) => {
-            const isOpen = openFaq === index;
+            const isOpen = !!openFaqs[index];
             return (
               <div key={index} className="paper-card overflow-hidden transition-all">
                 <button

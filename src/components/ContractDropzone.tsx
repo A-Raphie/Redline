@@ -129,8 +129,19 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
           </div>
 
           {error && (
-            <div className="p-3 mb-4 rounded-xl bg-[var(--diff-del-bg)] border border-[var(--diff-del-border)] text-xs text-[var(--diff-del-text)] font-semibold">
-              {error}
+            <div className="p-3 mb-4 rounded-xl bg-[var(--diff-del-bg)] border border-[var(--diff-del-border)] text-xs text-[var(--diff-del-text)] font-semibold flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span>{error}</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setError(null);
+                  onSelectSample('saas-enterprise');
+                  setShowCustomUpload(false);
+                }}
+                className="underline hover:opacity-80 font-bold shrink-0 cursor-pointer text-left"
+              >
+                Load Sample SaaS Agreement
+              </button>
             </div>
           )}
 
@@ -168,6 +179,20 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
               <div className="mt-3 inline-flex items-center space-x-1 text-[10px] text-[var(--text-secondary)] bg-[var(--bg-surface)] px-2.5 py-1 rounded-full border border-[var(--border-default)]">
                 <CheckCircle2 className="w-3 h-3 text-[var(--diff-ins-text)]" />
                 <span>100% In-Browser Privacy: Confidential files never touch a server</span>
+              </div>
+              <div className="mt-3 text-[11px] text-[var(--text-muted)]">
+                Need a test file?{' '}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectSample('saas-enterprise');
+                    setShowCustomUpload(false);
+                  }}
+                  className="text-[var(--brand)] font-semibold underline hover:opacity-80 cursor-pointer"
+                >
+                  Load Predatory SaaS MSA Sample
+                </button>
               </div>
             </div>
           ) : (
