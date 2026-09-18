@@ -43,7 +43,7 @@ export const ProductStorySections: React.FC = () => {
     },
     {
       q: 'Can I audit contracts other than SaaS agreements and NDAs?',
-      a: 'Yes. The engine tests standard commercial legal categories: Limitation of Liability, Indemnification, Term & Renewal, IP Rights, Warranties, and Confidentiality. You can upload consulting agreements, service orders, or master services agreements.'
+      a: 'Yes. The engine tests standard commercial legal categories: Limitation of Liability, Indemnification, Term & Renewal, IP Rights, Warranties, Governing Law, and Fees & Payment. You can upload consulting agreements, service orders, or master services agreements.'
     }
   ];
 
@@ -142,7 +142,7 @@ export const ProductStorySections: React.FC = () => {
             </div>
             <div className="mt-6 pt-3 border-t border-[var(--border-default)] text-[11px] font-semibold text-[var(--text-muted)] flex items-center space-x-1">
               <CheckCircle2 className="w-3.5 h-3.5 text-[var(--diff-ins-text)]" />
-              <span>Common Paper CSA &amp; NDA Rules</span>
+              <span>Common Paper CSA, NDA &amp; PSA Rules</span>
             </div>
           </div>
 

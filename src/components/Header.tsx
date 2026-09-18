@@ -3,10 +3,11 @@
 import React from 'react';
 import { Download, Sparkles, Scale } from 'lucide-react';
 import { SAMPLE_CONTRACTS } from '../lib/standards/sampleContracts';
+import { StandardType } from '../lib/types';
 
 interface HeaderProps {
-  currentStandard: 'SAAS_CSA' | 'MUTUAL_NDA';
-  onStandardChange: (standard: 'SAAS_CSA' | 'MUTUAL_NDA') => void;
+  currentStandard: StandardType;
+  onStandardChange: (standard: StandardType) => void;
   onSelectSample: (sampleId: string) => void;
   onOpenExport: () => void;
   hasDocument: boolean;
@@ -44,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Nav Anchors for Deep Exploration */}
-          <nav className="hidden lg:flex items-center space-x-5 text-xs text-[var(--text-secondary)] font-medium">
+          <nav className="hidden xl:flex items-center space-x-5 text-xs text-[var(--text-secondary)] font-medium">
             <a href="#how-it-works" className="hover:text-[var(--text-primary)] transition-colors">
               How It Works
             </a>
@@ -66,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={() => onStandardChange('SAAS_CSA')}
-                className={`px-3 py-1 rounded-md transition-all font-medium ${
+                className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                   currentStandard === 'SAAS_CSA'
                     ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] font-semibold shadow-xs border border-[var(--border-strong)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -77,13 +78,24 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={() => onStandardChange('MUTUAL_NDA')}
-                className={`px-3 py-1 rounded-md transition-all font-medium ${
+                className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                   currentStandard === 'MUTUAL_NDA'
                     ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] font-semibold shadow-xs border border-[var(--border-strong)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 Mutual NDA
+              </button>
+              <button
+                type="button"
+                onClick={() => onStandardChange('SERVICES_PSA')}
+                className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+                  currentStandard === 'SERVICES_PSA'
+                    ? 'bg-[var(--bg-surface)] text-[var(--text-primary)] font-semibold shadow-xs border border-[var(--border-strong)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                }`}
+              >
+                Services PSA
               </button>
             </div>
 

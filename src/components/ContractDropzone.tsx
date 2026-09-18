@@ -81,7 +81,7 @@ export const ContractDropzone: React.FC<ContractDropzoneProps> = ({
               >
                 <span>{sample.type === 'SAAS_MSA' ? 'Enterprise SaaS MSA' : sample.type === 'MUTUAL_NDA' ? 'Mutual NDA' : 'Consulting MSA'}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded font-bold ${isActive ? 'bg-white/20 text-white' : 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)]'}`}>
-                  {sample.type === 'SAAS_MSA' ? 'Grade F' : sample.type === 'MUTUAL_NDA' ? 'Grade D-' : 'Grade F'}
+                  Grade F
                 </span>
               </button>
             );

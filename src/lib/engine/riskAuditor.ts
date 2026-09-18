@@ -1,4 +1,4 @@
-import { AuditReport, CategorySummary, Clause, ClauseCategory, RiskLevel } from '../types';
+import { AuditReport, CategorySummary, Clause, ClauseCategory, RiskLevel, StandardType } from '../types';
 import { COMMON_PAPER_CSA_RULES, StandardBenchmarkRule } from '../standards/commonPaperSaaS';
 import { COMMON_PAPER_NDA_RULES } from '../standards/mutualNDA';
 import { RawSegment, segmentContract } from './clauseSegmenter';
@@ -6,13 +6,15 @@ import { RawSegment, segmentContract } from './clauseSegmenter';
 export function auditContract(
   contractTitle: string,
   rawText: string,
-  standardType: 'SAAS_CSA' | 'MUTUAL_NDA' = 'SAAS_CSA'
+  standardType: StandardType = 'SAAS_CSA'
 ): AuditReport {
   const segments: RawSegment[] = segmentContract(rawText);
   const benchmarkRules: StandardBenchmarkRule[] =
     standardType === 'SAAS_CSA'
       ? COMMON_PAPER_CSA_RULES
-      : [...COMMON_PAPER_NDA_RULES, ...COMMON_PAPER_CSA_RULES];
+      : standardType === 'MUTUAL_NDA'
+      ? [...COMMON_PAPER_NDA_RULES, ...COMMON_PAPER_CSA_RULES]
+      : COMMON_PAPER_CSA_RULES;
 
   const auditedClauses: Clause[] = segments.map((seg) => auditSingleClause(seg, benchmarkRules));
 
@@ -52,7 +54,9 @@ export function auditContract(
     benchmarkStandard:
       standardType === 'SAAS_CSA'
         ? 'Common Paper Cloud Service Agreement v1.0'
-        : 'Common Paper Mutual NDA v1.0',
+        : standardType === 'MUTUAL_NDA'
+        ? 'Common Paper Mutual NDA v1.0'
+        : 'Common Paper Professional Services Agreement v1.0',
     categories,
     clauses: auditedClauses,
     createdAt: new Date().toISOString(),

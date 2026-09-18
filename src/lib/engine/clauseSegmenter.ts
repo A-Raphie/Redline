@@ -64,7 +64,7 @@ const CATEGORY_KEYWORDS: Record<ClauseCategory, { titleKeywords: RegExp[]; bodyK
     ],
   },
   GOVERNING_LAW_AND_DISPUTES: {
-    titleKeywords: [/governing\s+law/i, /jurisdiction/i, /dispute\s+resolution/i, /arbitration/i, /venue/i],
+    titleKeywords: [/governing\s+law/i, /jurisdiction/i, /dispute\s+resolution/i, /arbitration/i, /venue/i, /remedies/i, /legal\s+fees/i],
     bodyKeywords: [
       /governed\s+by\s+the\s+laws\s+of/i,
       /exclusive\s+venue/i,
@@ -75,7 +75,7 @@ const CATEGORY_KEYWORDS: Record<ClauseCategory, { titleKeywords: RegExp[]; bodyK
     ],
   },
   FEES_AND_PAYMENT: {
-    titleKeywords: [/payment/i, /fee/i, /invoic/i, /billing/i, /compensation/i],
+    titleKeywords: [/payment/i, /(?<!legal\s+)fee/i, /invoic/i, /billing/i, /compensation/i],
     bodyKeywords: [
       /payment\s+terms/i,
       /remit\s+payment/i,

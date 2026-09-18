@@ -64,3 +64,5 @@ export interface SampleContract {
   predatorySummary: string;
   text: string;
 }
+
+export type StandardType = 'SAAS_CSA' | 'MUTUAL_NDA' | 'SERVICES_PSA';

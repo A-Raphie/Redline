@@ -10,11 +10,11 @@ import { ExportModal } from '../components/ExportModal';
 import { ProductStorySections } from '../components/ProductStorySections';
 import { SAMPLE_CONTRACTS } from '../lib/standards/sampleContracts';
 import { auditContract } from '../lib/engine/riskAuditor';
-import { AuditReport, Clause, ClauseCategory } from '../lib/types';
+import { AuditReport, Clause, ClauseCategory, StandardType } from '../lib/types';
 import { Scale, Download, Mail, CheckCircle2, Sparkles } from 'lucide-react';
 
 export default function Home() {
-  const [currentStandard, setCurrentStandard] = useState<'SAAS_CSA' | 'MUTUAL_NDA'>('SAAS_CSA');
+  const [currentStandard, setCurrentStandard] = useState<StandardType>('SAAS_CSA');
   const [selectedSampleId, setSelectedSampleId] = useState<string>('aggressive-saas-msa');
   const [contractTitle, setContractTitle] = useState<string>('Vendor Master Cloud Services Agreement');
   const [rawText, setRawText] = useState<string>('');
@@ -36,11 +36,13 @@ export default function Home() {
   }, []);
 
   // Handle Standard Change
-  const handleStandardChange = (standard: 'SAAS_CSA' | 'MUTUAL_NDA') => {
+  const handleStandardChange = (standard: StandardType) => {
     setCurrentStandard(standard);
     if (rawText) {
       const audited = auditContract(contractTitle, rawText, standard);
       setReport(audited);
+      setSelectedCategory('ALL');
+      setInspectedClause(null);
     }
   };
 
@@ -51,7 +53,12 @@ export default function Home() {
       setSelectedSampleId(sample.id);
       setContractTitle(sample.title);
       setRawText(sample.text);
-      const standard = sample.type === 'MUTUAL_NDA' ? 'MUTUAL_NDA' : 'SAAS_CSA';
+      const standard: StandardType =
+        sample.type === 'MUTUAL_NDA'
+          ? 'MUTUAL_NDA'
+          : sample.type === 'SERVICES_AGREEMENT'
+          ? 'SERVICES_PSA'
+          : 'SAAS_CSA';
       setCurrentStandard(standard);
       const audited = auditContract(sample.title, sample.text, standard);
       setReport(audited);

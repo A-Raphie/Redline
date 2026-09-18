@@ -197,8 +197,8 @@ export const COMMON_PAPER_CSA_RULES: StandardBenchmarkRule[] = [
       'Neutral commercial jurisdiction (e.g. Delaware or mutual state), mutual waiver of jury trial, and bilateral attorney fees only if prevailing party.',
     predatoryPatterns: [
       {
-        pattern: /customer\s+shall\s+pay\s+all\s+(?:attorney(?:'s)?\s+fees|legal\s+costs)\s+incurred\s+by\s+provider/i,
-        issue: 'Unilateral attorney fee shifting: Customer pays vendor legal fees regardless of who prevails.',
+        pattern: /(?:customer|recipient|contractor|client)\s+shall\s+pay\s+all\s+(?:attorney(?:'s)?\s+fees|legal\s+costs|court\s+costs).{0,60}incurred\s+by\s+(?:provider|company|client)/i,
+        issue: 'Unilateral attorney fee shifting: Customer or contractor forced to pay counterpart legal fees regardless of who prevails.',
         severity: 'HIGH',
         penaltyScore: 25,
       },

@@ -8,7 +8,7 @@ export const SAMPLE_CONTRACTS: SampleContract[] = [
     description:
       'Standard enterprise SaaS vendor agreement containing 5 classic predatory traps: token $100 vendor liability cap, unlimited customer liability, 60-day auto-renewal notice trap, unilateral 15% annual price escalation, and proprietary customer feedback IP seizure.',
     targetVictim: 'Startups & Mid-Market Enterprise Customers',
-    predatorySummary: 'Grade F (Severe Asymmetric Exposure) · 5 Critical / High Risk Traps Detected',
+    predatorySummary: 'Grade F (Severe Asymmetric Exposure) · 6 Critical / High Risk Traps Detected',
     text: `MASTER CLOUD SERVICES AGREEMENT
 
 This Master Cloud Services Agreement ("Agreement") is entered into between Apex Enterprise Systems Inc. ("Provider") and the customer agreeing to these terms ("Customer").
@@ -50,7 +50,7 @@ SECTION 13. GOVERNING LAW & LEGAL FEES
     description:
       'A mutual NDA containing a sneak non-compete clause, perpetual confidentiality for routine sales discussions, and unilateral fee-shifting clauses.',
     targetVictim: 'Founders & Contractors in Partnership Talks',
-    predatorySummary: 'Grade D- (Restrictive Covenant Trap) · Sneak Non-Compete Detected',
+    predatorySummary: 'Grade F (Severe Restrictive Covenant & Perpetual Trap) · 3 Critical Traps Detected',
     text: `MUTUAL CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT
 
 This Mutual Non-Disclosure Agreement ("Agreement") is entered into by and between Venture Holdings Corp ("Company") and the prospective partner ("Recipient").
