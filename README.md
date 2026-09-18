@@ -21,7 +21,7 @@ Every benchmark in Redline is verifiable directly on the live instrument using p
 | Contract Preset | Predatory Traps Identified | Initial Risk Grade | Automated Standard Fallback | OpenXML Revisions Status |
 | :--- | :--- | :---: | :--- | :---: |
 | **Aggressive SaaS MSA** | $100 vendor cap, unlimited customer liability, 90-day auto-renewal, unilateral 20% price hike, Customer Data AI training seizure | **Grade F** | Mutual 12-month fee cap, 30-day notice, mutual IP protection | Valid `<w:ins>` & `<w:del>` |
-| **Unilateral NDA** | Sneak non-compete, perpetual confidentiality for routine chats, one-way IP disclosure, one-sided fee shifting | **Grade D-** | Standard 2-year survival, mutual confidentiality, non-compete strikeout | Valid `<w:ins>` & `<w:del>` |
+| **Unilateral NDA** | Sneak non-compete, perpetual confidentiality for routine chats, one-way IP disclosure, one-sided fee shifting | **Grade F** | Standard 3-year survival, mutual confidentiality, non-compete strikeout | Valid `<w:ins>` & `<w:del>` |
 | **Unfair Consulting MSA** | Net-90 delayed payout, broad customer specification indemnity, pre-payment IP forfeiture | **Grade F** | Net-30 payment standard, capped indemnity, IP assignment upon full payment | Valid `<w:ins>` & `<w:del>` |
 
 ---

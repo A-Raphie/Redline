@@ -10,6 +10,7 @@ import { ExportModal } from '../components/ExportModal';
 import { ProductStorySections } from '../components/ProductStorySections';
 import { SAMPLE_CONTRACTS } from '../lib/standards/sampleContracts';
 import { auditContract } from '../lib/engine/riskAuditor';
+import { detectContractStandard } from '../lib/parser/docxParser';
 import { AuditReport, Clause, ClauseCategory, StandardType } from '../lib/types';
 import { Scale, Download, Mail, CheckCircle2, Sparkles } from 'lucide-react';
 
@@ -72,7 +73,9 @@ export default function Home() {
     setSelectedSampleId('');
     setContractTitle(title);
     setRawText(text);
-    const audited = auditContract(title, text, currentStandard);
+    const standard = detectContractStandard(title, text);
+    setCurrentStandard(standard);
+    const audited = auditContract(title, text, standard);
     setReport(audited);
     setSelectedCategory('ALL');
     setInspectedClause(null);

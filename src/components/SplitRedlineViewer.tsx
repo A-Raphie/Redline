@@ -119,21 +119,22 @@ export const SplitRedlineViewer: React.FC<SplitRedlineViewerProps> = ({
                 <button
                   type="button"
                   onClick={() => onToggleAccept(clause.id)}
-                  className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-all flex items-center space-x-1 shadow-xs cursor-pointer ${
+                  title={clause.isAccepted ? 'Click to revert back to vendor wording' : 'Click to apply Common Paper standard fix'}
+                  className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-all flex items-center space-x-1.5 shadow-xs cursor-pointer ${
                     clause.isAccepted
-                      ? 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)] border border-[var(--diff-ins-border)]'
-                      : 'bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                      ? 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)] border border-[var(--diff-ins-border)] hover:opacity-90'
+                      : 'bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)]'
                   }`}
                 >
                   {clause.isAccepted ? (
                     <>
-                      <Check className="w-3.5 h-3.5" />
+                      <Check className="w-3.5 h-3.5 shrink-0" />
                       <span>Standard Fix Applied</span>
                     </>
                   ) : (
                     <>
-                      <RotateCcw className="w-3.5 h-3.5" />
-                      <span>Keep Vendor Clause</span>
+                      <RotateCcw className="w-3.5 h-3.5 shrink-0 text-[var(--brand)]" />
+                      <span>Apply Standard Fix</span>
                     </>
                   )}
                 </button>

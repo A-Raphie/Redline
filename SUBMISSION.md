@@ -3,7 +3,7 @@
 **Live Product:** [https://try-redline.vercel.app](https://try-redline.vercel.app)  
 **GitHub Repository:** [https://github.com/A-Raphie/redline](https://github.com/A-Raphie/redline)  
 **Builder:** [Raphie](https://x.com/a_raphie)  
-**Standard Benchmarked:** Common Paper Cloud Service Agreement & Mutual NDA (MIT License)  
+**Standard Benchmarked:** Common Paper Cloud Service Agreement, Mutual NDA & Professional Services Agreement (MIT License)  
 
 ---
 
@@ -19,7 +19,7 @@ Startups and operators sign enterprise vendor contracts with predatory terms eve
 
 ### What It Does
 - **Parses contracts 100% client-side**: Upload any vendor `.docx` or paste plaintext directly in your browser. Confidential contracts never touch a backend server or database.
-- **Audits against open Common Paper standards**: Benchmarks incoming clauses against open-source, lawyer-drafted standards (Cloud Service Agreement & Mutual NDA) across 6 core risk categories.
+- **Audits against open Common Paper standards**: Benchmarks incoming clauses against open-source, lawyer-drafted standards (Cloud Service Agreement, Mutual NDA & Professional Services Agreement) across 7 core risk categories.
 - **Translates risk into plain English**: Replaces dense legalese with clear commercial stakes (e.g. *"The vendor limits their liability to \$100, but leaves yours unlimited"*) while retaining expandable side-by-side legal diffs for attorneys.
 - **1-Click batch standardization**: Accept all recommended Common Paper standard fallbacks with a single click or toggle clauses individually.
 - **Generates native Microsoft Word tracked changes**: Exports true Office OpenXML `.docx` files with `<w:ins>` and `<w:del>` tracked revisions. When opened in Microsoft Word or Google Docs, the redlines appear as native author revisions ready for counterparty counsel.
@@ -63,7 +63,7 @@ We learned that the primary bottleneck in B2B contract negotiation isn't generat
 
 ### Open-Source Libraries & Standards Declaration (Criterion 5 Transparency)
 In compliance with LexHack 2026 rules, we transparently declare all pre-existing open-source libraries and standards used:
-- **Standards**: Common Paper Cloud Service Agreement v1.0 and Mutual NDA v1.0 (Creative Commons / MIT License).
+- **Standards**: Common Paper Cloud Service Agreement v1.0, Mutual NDA v1.0, and Professional Services Agreement v1.0 (Creative Commons / MIT License).
 - **Document Engine**: `docx` npm library (v9.5.3) for generating Office OpenXML binary blobs with tracked change nodes.
 - **Parser**: `mammoth` (v1.11.0) for client-side `.docx` AST extraction without backend telemetry.
 - **Diff Algorithm**: `diff` npm package (v9.0.0) for word and character Myers diff AST generation.

@@ -17,9 +17,17 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
   onSelectCategory,
   onAcceptAll,
 }) => {
-  const isDangerous = report.grade === 'F' || report.grade === 'D';
   const allAccepted = report.clauses.every((c) => c.isAccepted);
   const someAccepted = report.clauses.some((c) => c.isAccepted);
+  const acceptedCount = report.clauses.filter((c) => c.isAccepted).length;
+  const isFullyRemediated = allAccepted && report.flaggedClauses > 0;
+  const isDangerous = !isFullyRemediated && (report.grade === 'F' || report.grade === 'D');
+
+  const displayGrade = isFullyRemediated ? 'A' : report.grade;
+  const displayStampLabel = isFullyRemediated ? 'REDLINED' : 'GRADE';
+  const displayVerdict = isFullyRemediated
+    ? 'All predatory terms remediated with open standards. Attorney-ready Word file with tracked changes is ready to export.'
+    : report.verdict;
 
   return (
     <div className="paper-card p-4 sm:p-5 mb-8 shadow-xs min-w-0 max-w-full overflow-hidden">
@@ -28,14 +36,14 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
         <div className="flex items-start sm:items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
           {/* Grade Stamp */}
           <div
-            className={`w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-xl border flex flex-col items-center justify-center font-bold legal-mono ${
+            className={`w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-xl border flex flex-col items-center justify-center font-bold legal-mono transition-all duration-200 ${
               isDangerous
                 ? 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)] border-[var(--diff-del-border)]'
                 : 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)] border-[var(--diff-ins-border)]'
             }`}
           >
-            <span className="text-xl sm:text-2xl leading-none">{report.grade}</span>
-            <span className="text-[8px] uppercase tracking-wider font-bold mt-0.5">GRADE</span>
+            <span className="text-xl sm:text-2xl leading-none">{displayGrade}</span>
+            <span className="text-[8px] uppercase tracking-wider font-bold mt-0.5">{displayStampLabel}</span>
           </div>
 
           <div className="min-w-0 flex-1">
@@ -44,17 +52,23 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
                 {report.contractTitle}
               </h2>
               <span
-                className={`text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full font-bold shrink-0 ${
-                  isDangerous
+                className={`text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full font-bold shrink-0 transition-colors ${
+                  isFullyRemediated
+                    ? 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)] border border-[var(--diff-ins-border)]'
+                    : isDangerous
                     ? 'bg-[var(--diff-del-bg)] text-[var(--diff-del-text)]'
                     : 'bg-[var(--diff-ins-bg)] text-[var(--diff-ins-text)]'
                 }`}
               >
-                {report.flaggedClauses > 0 ? `${report.flaggedClauses} Traps Flagged` : 'Fair Agreement'}
+                {isFullyRemediated
+                  ? `✓ All ${report.flaggedClauses} Traps Remediated (Grade A)`
+                  : report.flaggedClauses > 0
+                  ? `${report.flaggedClauses} Traps Flagged`
+                  : 'Fair Agreement'}
               </span>
             </div>
             <p className="text-xs text-[var(--text-secondary)] mt-1 max-w-2xl leading-relaxed">
-              {report.verdict}
+              {displayVerdict}
             </p>
           </div>
         </div>
@@ -63,8 +77,16 @@ export const RiskSummaryMatrix: React.FC<RiskSummaryMatrixProps> = ({
         <div className="flex flex-col sm:items-end gap-2 shrink-0 w-full sm:w-auto">
           <div className="text-xs text-[var(--text-muted)] flex items-center justify-between sm:justify-end">
             <span>
-              <span className="font-bold text-[var(--text-primary)] text-sm">{report.flaggedClauses}</span> of{' '}
-              {report.totalClauses} clauses need changes
+              {isFullyRemediated ? (
+                <span className="text-[var(--diff-ins-text)] font-semibold">
+                  All {report.flaggedClauses} standard fixes active
+                </span>
+              ) : (
+                <>
+                  <span className="font-bold text-[var(--text-primary)] text-sm">{report.flaggedClauses}</span> of{' '}
+                  {report.totalClauses} clauses need changes
+                </>
+              )}
             </span>
           </div>
 

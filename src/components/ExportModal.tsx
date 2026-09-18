@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Download, Mail, Copy, Check, FileText, CheckCircle2 } from 'lucide-react';
 import { AuditReport } from '../lib/types';
 import { exportTrackedDocx } from '../lib/docx/docxExporter';
@@ -21,6 +21,15 @@ export const ExportModal: React.FC<ExportModalProps> = ({
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedText, setCopiedText] = useState(false);
   const [exportComplete, setExportComplete] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 

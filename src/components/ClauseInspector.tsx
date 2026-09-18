@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, BookOpen, AlertCircle, Check, ArrowRight, ShieldCheck, Scale } from 'lucide-react';
 import { Clause } from '../lib/types';
 
@@ -15,6 +15,15 @@ export const ClauseInspector: React.FC<ClauseInspectorProps> = ({
   onClose,
   onToggleAccept,
 }) => {
+  useEffect(() => {
+    if (!clause) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [clause, onClose]);
+
   if (!clause) return null;
 
   return (

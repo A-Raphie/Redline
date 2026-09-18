@@ -63,3 +63,28 @@ export function parsePlainText(text: string, title = 'Custom Uploaded Agreement'
     paragraphCount: paragraphs.length,
   };
 }
+
+import { StandardType } from '../types';
+
+export function detectContractStandard(title: string, text: string): StandardType {
+  const combined = `${title}\n${text.slice(0, 2000)}`.toLowerCase();
+
+  // Check NDA indicators
+  if (
+    /non-disclosure|confidentiality\s+agreement|mutual\s+nda|\bnda\b|proprietary\s+information/i.test(combined)
+  ) {
+    return 'MUTUAL_NDA';
+  }
+
+  // Check Consulting / Services indicators
+  if (
+    /consulting|independent\s+contractor|professional\s+services|statement\s+of\s+work|\bsow\b|contractor\s+agreement/i.test(combined) &&
+    !/cloud\s+service|software\s+as\s+a\s+service|\bsaas\b/i.test(combined)
+  ) {
+    return 'SERVICES_PSA';
+  }
+
+  // Default to SaaS CSA
+  return 'SAAS_CSA';
+}
+
