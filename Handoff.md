@@ -31,7 +31,7 @@
 5. **Document Ingestion:**
    - Client-side `.docx` extraction (via mammoth), plaintext upload, and paste modes.
 6. **Clause Segmentation & Risk Scoring:**
-   - 6-category risk analysis matrix with letter grade (A to F) and fairness score (0-100).
+   - 7-category risk analysis matrix (Liability, Indemnity, Renewal, IP, Warranties, Disputes, Fees & Payment) with letter grade (A to F) and fairness score (0-100).
 7. **Split Redline Workbench:**
    - Synchronized side-by-side or unified diff view with terracotta strikethrough deletions, forest green insertions, and legal rationale drawer.
 8. **Native Tracked Changes (.docx) Export:**
