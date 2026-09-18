@@ -1,4 +1,4 @@
-# Redline — PRD (Product Requirements Document)
+# Redline : PRD (Product Requirements Document)
 
 ## Problem
 Commercial contracting is systematically biased against startups, freelancers, and small businesses. Inbound vendor agreements, client Master Services Agreements (MSAs), and non-disclosure agreements (NDAs) frequently contain one-sided, predatory terms: unlimited liability for the customer, zero vendor liability, unilateral indemnification, perpetual confidentiality, and 60-day auto-renewal traps. Hiring an attorney to review and redline a single agreement costs \$500 to \$2,000 and takes days, leading 85%+ of small businesses to sign blind.

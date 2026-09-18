@@ -1,4 +1,4 @@
-# Redline — Tasks & Phased Build Plan
+# Redline : Tasks & Phased Build Plan
 
 ## Phase 1: Project Setup & Core Infrastructure [COMPLETED]
 - [x] Initialize Next.js project with Tailwind CSS and TypeScript in `/Users/raphie/Documents/Hackathons/redline`

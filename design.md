@@ -1,4 +1,4 @@
-# Redline — Design System & Screen Flows
+# Redline : Design System & Screen Flows
 
 ## Style Grammar: winsznx/closeout (Closure Ledger / Warm Paper)
 
@@ -12,19 +12,19 @@ Redline mirrors the proven hackathon-winning design language of **`winsznx/close
 ### Color Palette & Semantic Tokens (from `winsznx/closeout`)
 ```css
 :root {
-  /* Elevation ladder — base < surface < subtle < overlay */
+  /* Elevation ladder : base < surface < subtle < overlay */
   --bg-base: #F5F1E8;             /* Warm linen paper canvas */
   --bg-surface: #FFFEFB;          /* Crisp off-white card surface */
   --bg-subtle: #EEE8DE;           /* Muted hover & inset surface */
   --bg-surface-strong: #E4DDD1;   /* Container & table header */
   --bg-overlay: #FFFFFF;          /* Modals, popovers, drawers */
 
-  /* Text tiers — exactly three */
+  /* Text tiers : exactly three */
   --text-primary: #1C1B1A;        /* Rich carbon black ink */
   --text-secondary: #55504A;      /* Warm slate secondary text */
   --text-muted: #7C756D;          /* Stone muted metadata */
 
-  /* Border scale — crisp paper lines */
+  /* Border scale : crisp paper lines */
   --border-default: #D8D0C4;      /* Hairline ledger border */
   --border-strong: #BEB4A7;       /* Hover / active boundary */
 
@@ -40,7 +40,7 @@ Redline mirrors the proven hackathon-winning design language of **`winsznx/close
   --accent-gold-subtle: #F7EEDB;
   --accent-gold-strong: #8C5D17;
 
-  /* Redline Diff Tokens — Terracotta (del/trap) and Forest (ins/remedy) */
+  /* Redline Diff Tokens : Terracotta (del/trap) and Forest (ins/remedy) */
   --diff-del-bg: #FAE3DA;
   --diff-del-text: #B83E23;
   --diff-del-border: #E76545;

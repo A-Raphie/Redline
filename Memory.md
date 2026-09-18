@@ -1,4 +1,4 @@
-# Redline — Project Memory & Decisions Log
+# Redline : Project Memory & Decisions Log
 
 ## Key Decisions & Context
 

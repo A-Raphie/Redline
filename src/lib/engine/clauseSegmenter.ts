@@ -95,7 +95,7 @@ const CATEGORY_KEYWORDS: Record<ClauseCategory, { titleKeywords: RegExp[]; bodyK
 export function segmentContract(fullText: string): RawSegment[] {
   // Regex to detect standard section boundaries:
   // "SECTION 1. TITLE", "ARTICLE IV. TITLE", "1.1 Title", or standalone bold headers
-  const sectionHeaderRegex = /(?:^|\n\n)(?:SECTION\s+(\d+(?:\.\d+)?)|ARTICLE\s+([IVXLCDM]+|\d+)|(\d+\.\d+|\d+\.)(?!\d))\s*[.:\-–—]?\s*([A-Z\s&,–\-\/]{3,60})(?:\n|$)/gm;
+  const sectionHeaderRegex = /(?:^|\n\n)(?:SECTION\s+(\d+(?:\.\d+)?)|ARTICLE\s+([IVXLCDM]+|\d+)|(\d+\.\d+|\d+\.)(?!\d))\s*[.:\-\u2013\u2014]?\s*([A-Z\s&,\u2013\-\/]{3,60})(?:\n|$)/gm;
 
   const matches: { index: number; length: number; sectionNumber?: string; title: string }[] = [];
   let match: RegExpExecArray | null;

@@ -1,4 +1,4 @@
-# Redline — Technical Architecture
+# Redline : Technical Architecture
 
 ## System Overview
 Redline is architected as a pure client-side application built on **Next.js 14 (App Router) + TypeScript + Tailwind CSS**. It conforms to the **Raphie Static Hosting Doctrine** (zero persistent servers, deployable to static hosts or serverless edge without runtime container overhead).
