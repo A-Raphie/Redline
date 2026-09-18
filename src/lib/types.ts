@@ -7,6 +7,7 @@ export type ClauseCategory =
   | 'IP_AND_DATA_OWNERSHIP'
   | 'WARRANTIES_AND_SLA'
   | 'GOVERNING_LAW_AND_DISPUTES'
+  | 'FEES_AND_PAYMENT'
   | 'GENERAL';
 
 export interface Clause {

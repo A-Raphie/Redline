@@ -143,6 +143,11 @@ const CATEGORY_LABELS: Record<ClauseCategory, { label: string; desc: string; tra
     desc: 'Jurisdiction, arbitration, and recovery of legal costs.',
     trap: 'Unilateral fee shifting forcing customer to pay vendor legal costs.',
   },
+  FEES_AND_PAYMENT: {
+    label: 'Fees & Payment',
+    desc: 'Invoicing schedules, payment windows, late interest, and withholding restrictions.',
+    trap: 'Predatory 60-90+ day payment delays or unilateral rights to withhold fees without penalty.',
+  },
   GENERAL: {
     label: 'General Provisions',
     desc: 'Miscellaneous clauses, notices, and operational definitions.',
@@ -160,6 +165,7 @@ function summarizeCategories(clauses: Clause[]): CategorySummary[] {
     'IP_AND_DATA_OWNERSHIP',
     'WARRANTIES_AND_SLA',
     'GOVERNING_LAW_AND_DISPUTES',
+    'FEES_AND_PAYMENT',
   ];
 
   for (const cat of categories) {

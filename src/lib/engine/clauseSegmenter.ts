@@ -74,6 +74,18 @@ const CATEGORY_KEYWORDS: Record<ClauseCategory, { titleKeywords: RegExp[]; bodyK
       /waives\s+trial\s+by\s+jury/i,
     ],
   },
+  FEES_AND_PAYMENT: {
+    titleKeywords: [/payment/i, /fee/i, /invoic/i, /billing/i, /compensation/i],
+    bodyKeywords: [
+      /payment\s+terms/i,
+      /remit\s+payment/i,
+      /withhold\s+payment/i,
+      /past-due\s+invoices/i,
+      /late\s+fees/i,
+      /net\s+\d+/i,
+      /upon\s+invoice/i,
+    ],
+  },
   GENERAL: {
     titleKeywords: [],
     bodyKeywords: [],

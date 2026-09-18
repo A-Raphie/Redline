@@ -24,14 +24,14 @@ export const COMMON_PAPER_CSA_RULES: StandardBenchmarkRule[] = [
       'Mutual aggregate liability capped at the fees paid or payable by Customer in the 12 months preceding the incident. Mutual waiver of indirect and consequential damages.',
     predatoryPatterns: [
       {
-        pattern: /customer(?:'s)?\s+liability\s+(?:shall\s+be\s+)?unlimited/i,
-        issue: 'Asymmetric liability: Customer has unlimited liability while Vendor liability is capped.',
+        pattern: /(?:customer|contractor|client|service\s+provider|party)(?:'s)?\s+liability.{0,60}(?:shall\s+be\s+)?unlimited/i,
+        issue: 'Asymmetric liability: One party has unlimited liability while counterparty is capped.',
         severity: 'CRITICAL',
         penaltyScore: 35,
       },
       {
-        pattern: /provider(?:'s)?\s+(?:total\s+)?aggregate\s+liability.{0,80}(?:\$100|\$50|one\s+hundred\s+dollars|fifty\s+dollars)/i,
-        issue: 'Nominal token liability cap ($100 or less) rendering vendor obligations legally illusory.',
+        pattern: /(?:provider|vendor|client|company|contractor)(?:'s)?\s+(?:total\s+)?(?:aggregate\s+)?liability.{0,80}(?:\$500|\$100|\$50|one\s+hundred\s+dollars|fifty\s+dollars)/i,
+        issue: 'Nominal token liability cap ($500 or less) rendering contractual obligations legally illusory.',
         severity: 'CRITICAL',
         penaltyScore: 30,
       },
@@ -42,8 +42,8 @@ export const COMMON_PAPER_CSA_RULES: StandardBenchmarkRule[] = [
         penaltyScore: 20,
       },
       {
-        pattern: /liability.{0,60}capped\s+at.{0,40}(?:one\s+month|thirty\s+days|fees\s+paid\s+in\s+prior\s+month)/i,
-        issue: 'Extremely compressed 1-month lookback liability cap rather than standard 12-month period.',
+        pattern: /liability.{0,80}(?:capped\s+at|not\s+exceed).{0,60}(?:one\s+month|thirty\s+(?:\(30\)\s+)?days|fees\s+paid\s+in\s+(?:prior|preceding)\s+(?:thirty|30|one)\s+(?:days|month))/i,
+        issue: 'Extremely compressed 30-day lookback liability cap rather than standard 12-month fee period.',
         severity: 'HIGH',
         penaltyScore: 20,
       },
@@ -61,16 +61,22 @@ export const COMMON_PAPER_CSA_RULES: StandardBenchmarkRule[] = [
       'Mutual indemnification: Provider defends Customer against third-party intellectual property infringement claims. Customer defends Provider against illegal or infringing Customer Data.',
     predatoryPatterns: [
       {
-        pattern: /customer\s+shall\s+defend.{0,50}indemnify.{0,50}hold\s+harmless.{0,150}(?:any\s+and\s+all\s+claims|regardless\s+of\s+cause|arising\s+from\s+use)/i,
-        issue: 'Broad, one-sided indemnity requiring Customer to hold Vendor harmless for ordinary system use.',
+        pattern: /(?:customer|contractor|service\s+provider)\s+shall\s+defend.{0,50}indemnify.{0,50}hold\s+harmless.{0,150}(?:any\s+and\s+all\s+claims|regardless\s+of\s+cause|arising\s+from\s+use)/i,
+        issue: 'Broad, one-sided indemnity requiring one party to hold the other harmless for ordinary operational use.',
         severity: 'CRITICAL',
         penaltyScore: 35,
       },
       {
-        pattern: /provider\s+disclaims\s+(?:all\s+)?indemnif(?:y|ication)|no\s+obligation\s+to\s+indemnify/i,
-        issue: 'Complete absence of vendor IP infringement indemnification, exposing Customer to copyright/patent lawsuits.',
+        pattern: /(?:provider|client|company|contractor)\s+(?:disclaims\s+(?:all\s+)?indemnif(?:y|ication)|(?:shall\s+have\s+)?no\s+obligation\s+to\s+indemnify)/i,
+        issue: 'Complete absence of counterparty indemnification, exposing party to third-party claims without defense.',
         severity: 'CRITICAL',
         penaltyScore: 30,
+      },
+      {
+        pattern: /(?:indemnify|hold\s+harmless).{0,180}(?:specifications,\s+designs|materials\s+provided\s+by\s+client)/i,
+        issue: 'One-sided indemnity requiring contractor to indemnify client for specifications or materials provided by client itself.',
+        severity: 'CRITICAL',
+        penaltyScore: 35,
       },
       {
         pattern: /indemnify.{0,80}(?:including\s+negligence\s+of\s+provider|sole\s+negligence)/i,
@@ -125,6 +131,18 @@ export const COMMON_PAPER_CSA_RULES: StandardBenchmarkRule[] = [
       {
         pattern: /(?:provider|vendor)\s+shall\s+own\s+all\s+(?:right,\s+title,\s+and\s+interest|intellectual\s+property).{0,80}(?:feedback|suggestions|customer\s+data)/i,
         issue: 'Predatory IP assignment: Vendor claims permanent ownership over customer feedback, derivative workflows, or configurations.',
+        severity: 'CRITICAL',
+        penaltyScore: 35,
+      },
+      {
+        pattern: /(?:sole\s+and\s+exclusive\s+property|work\s+made\s+for\s+hire|immediate\s+forfeiture).{0,120}(?:regardless\s+of\s+whether\s+payment|prior\s+to\s+payment|from\s+the\s+moment\s+of\s+conception)/i,
+        issue: 'Pre-payment IP forfeiture: Demands immediate transfer of work-for-hire IP prior to receipt of payment.',
+        severity: 'CRITICAL',
+        penaltyScore: 35,
+      },
+      {
+        pattern: /(?:assigns?\s+all\s+rights|permanently\s+assigns?).{0,80}(?:pre-existing\s+(?:code|libraries|templates|tooling|ip)|background\s+ip)/i,
+        issue: 'Pre-existing IP capture: Forces permanent assignment of contractor proprietary libraries, templates, and tooling.',
         severity: 'CRITICAL',
         penaltyScore: 35,
       },
@@ -195,5 +213,36 @@ export const COMMON_PAPER_CSA_RULES: StandardBenchmarkRule[] = [
       'Section 13. Governing Law & Dispute Resolution. This Agreement will be governed by the laws of the State of Delaware, without regard to its conflict of laws principles. The parties consent to the personal jurisdiction and exclusive venue of the state and federal courts located in New Castle County, Delaware. In any dispute arising out of this Agreement, the prevailing party shall be entitled to recover its reasonable attorney fees and costs.',
     attorneyCommentary:
       'Fee-shifting must always be mutual to the prevailing party. Never agree to a clause where one party pays the other party’s legal fees simply upon demand.',
+  },
+  {
+    category: 'FEES_AND_PAYMENT',
+    standardName: 'Common Paper Cloud Service Agreement v1.0',
+    sectionRef: 'Section 3 (Fees & Invoicing)',
+    balancedPrinciple:
+      'Invoices due net 30 days. Late payments accrue standard statutory interest. Fee disputes require good-faith written notice.',
+    predatoryPatterns: [
+      {
+        pattern: /(?:sixty|ninety|120|90)\s+(?:\(\d+\)\s+)?(?:business\s+|calendar\s+)?days.{0,50}(?:following|after|to\s+remit|of\s+invoice|written\s+approval)/i,
+        issue: 'Extreme 60 to 90+ day delayed payment terms creating severe working capital risk.',
+        severity: 'CRITICAL',
+        penaltyScore: 30,
+      },
+      {
+        pattern: /(?:sole\s+and\s+unfettered\s+discretion\s+to\s+withhold|withhold\s+payment\s+for\s+any\s+reason\s+without\s+penalty)/i,
+        issue: 'Unilateral right to arbitrarily withhold contract payments without notice, cure period, or penalty.',
+        severity: 'CRITICAL',
+        penaltyScore: 35,
+      },
+      {
+        pattern: /(?:waives\s+all\s+rights\s+to\s+charge\s+late\s+fees|no\s+late\s+fees|interest.{0,20}waived)/i,
+        issue: 'Forced waiver of statutory late fees, finance charges, and collection expenses on delinquent invoices.',
+        severity: 'MEDIUM',
+        penaltyScore: 15,
+      },
+    ],
+    standardFallbackClause:
+      'Section 3. Fees and Payment. (a) Invoicing & Terms. Customer will pay all fees within thirty (30) days of invoice date. Unless otherwise specified in an Order Form, all fees are non-cancelable and non-refundable.\n\n(b) Late Payments. Overdue payments will accrue interest at the lesser of 1.5% per month or the maximum rate permitted by law from the date due until paid in full.\n\n(c) Good-Faith Disputes. If Customer disputes any invoiced amount in good faith, Customer must provide written notice detailing the dispute within fifteen (15) days of receipt, and the parties will resolve the dispute in good faith before any suspension of service.',
+    attorneyCommentary:
+      'Common Paper standardizes net 30 payment terms across all commercial agreements. 90-day delays combined with arbitrary withholding rights essentially allow the payer to withhold compensation indefinitely without legal recourse.',
   },
 ];
