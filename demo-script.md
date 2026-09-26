@@ -1,68 +1,83 @@
 # Demo Script: Redline
 
-**Hackathon:** LexHack 2026 (Legal AI & Open Standards Track)  
-**Time Limit:** 1:45 (105 seconds)  
-**Judging Criteria:** Real-World Impact & Feasibility (25%), Technical Execution & Functionality (25%), User Experience & Design (20%), Innovation & Originality (15%), Presentation & Documentation (15%)  
-**Setup:** Centered Chrome browser window at 1280x800, visible cursor overlay with click ripple, warm paper background.
+**Hackathon:** LexHack 2026 (Devpost: https://lexhack-2026.devpost.com/)  
+**Required Video Length:** 2 to 3 minutes (Target: 2:40 / 160 seconds)  
+**Judging Criteria Alignment:**
+* Real-World Impact & Feasibility (25%)
+* Technical Execution & Functionality (25%)
+* User Experience & Design (20%)
+* Innovation & Originality (15%)
+* Presentation & Documentation (15%) - "How clear and compelling is the 3-minute video demonstration?"
+
+**Capture Specs:** 1280x800 browser viewport, 60fps, clean audio, visible mouse cursor with click highlights.
 
 ---
 
-### Scene 1: The Trap on the Front Door (0:00–0:18)
-**Criterion:** Real-World Impact & Feasibility (25%) + Presentation & Documentation (15%)  
-**Show:** Landing page front door at `https://try-redline.vercel.app`. Hero headline visible: *"Audit vendor contracts against open standards. Push back with native Word tracked changes."*  
-**Say:** "A vendor just sent your startup a Master Services Agreement. Buried on page eight is a token one hundred dollar liability cap for them, while your liability is completely uncapped. Today, teams either sign it blind, or wait three weeks for outside counsel. Redline audits agreements against open Common Paper standards in your browser and gives you the exact pushback in seconds."  
-**Action:** Smooth scroll down 150px to reveal the live risk benchmark bar and preset contract cards.  
-
-### Scene 2: 1-Click Instant Audit & Risk Grade (0:18–0:38)
-**Criterion:** Innovation & Originality (15%) + Technical Execution & Functionality (25%)  
-**Show:** Click on the preset *"Vendor Master Cloud Services Agreement (Predatory Enterprise Template)"*. Risk Summary Matrix animates into view showing **Grade F** with 5 critical traps.  
-**Say:** "Clicking our predatory enterprise sample runs the contract through our client-side parser. In less than two seconds, Redline segments the clauses and benchmarks each against Common Paper standard terms. We instantly flag five critical risks: uncapped liability, a ninety-day renewal trap, and an unauthorized right to train artificial intelligence models on your company data."  
-**Action:** Click the Aggressive SaaS preset card. Hover over the **Grade F** badge, then point to the category risk scorecards (Liability: Critical, IP & AI: Critical).  
-
-### Scene 3: Plain English Translation & Legal Accordion (0:38–0:58)
-**Criterion:** User Experience & Design (20%)  
-**Show:** Scroll down to the Split Redline Viewer. Focus on Clause 9 (Limitation of Liability). The plain-English warning card is displayed: *"The vendor limits their liability to $100, but leaves yours unlimited."*  
-**Say:** "Most operators do not read legalese, so Redline shows the business reality first: the vendor limits their liability to one hundred dollars, but leaves yours unlimited. The fair fix caps both parties at twelve months of fees paid. When counsel needs to verify, expanding the legal diff shows the exact word-level deletions in terracotta and insertions in forest green."  
-**Action:** Scroll to Clause 9. Click *"Show legal wording & redline diff"* to expand the legal accordion, exposing the word-by-word diff.  
-
-### Scene 4: 1-Click Batch Fix & Technical Engine (0:58–1:18)
-**Criterion:** Technical Execution & Functionality (25%)  
-**Show:** Top batch action bar in the Risk Summary Matrix. Click *"Accept All 5 Common Paper Fixes"*. The diffs flip from vendor terms to balanced standard terms.  
-**Say:** "Instead of arguing clause by clause, operators can click Accept All Common Paper Fixes. Our diff engine computes the Myers AST delta in memory. Every predatory clause is swapped for the battle-tested Common Paper fallback language, re-scoring our contract instantly."  
-**Action:** Click the green *"Accept All 5 Common Paper Fixes"* button. Observe the status badges switch to *"Common Paper Standard Applied"*.  
-
-### Scene 5: Native Word DOCX Export with Tracked Changes (1:18–1:35)
-**Criterion:** Technical Execution & Functionality (25%)  
-**Show:** Click *"Download Redlined Word Doc (.docx)"* in the sticky bottom bar. Open the Export Modal showing the native OpenXML tracked changes guarantee.  
-**Say:** "The real magic is the delivery format. Other tools give you a read-only PDF or markdown notes that vendors ignore. Redline compiles a native Microsoft Word dot d-o-c-x file using genuine OpenXML insertion and deletion nodes. When the vendor attorney opens this in Microsoft Word, it appears as genuine native tracked changes."  
-**Action:** Click *"Download Redlined Word Doc (.docx)"*. Show the downloaded `.docx` file in the browser tray. Switch tab to the *"Executive Pushback Email"* tab in the modal.  
-
-### Scene 6: Executive Pushback Email & Close (1:35–1:45)
-**Criterion:** Real-World Impact & Feasibility (25%) + Presentation & Documentation (15%)  
-**Show:** Copyable executive pushback email memo citing section numbers and Common Paper standard justifications. Hold screen with live URL `try-redline.vercel.app` and GitHub repository link.  
-**Say:** "You also get an executive pushback email ready to send. Stop signing one-sided vendor agreements. Redline is live right now at try-redline dot vercel dot app, completely client-side and free."  
-**Action:** Click *"Copy Email to Clipboard"*, see the green checkmark confirmation, and hold for 5 seconds on the final screen.  
+### Scene 1: The Commercial Contracting Crisis (0:00 - 0:28)
+* **Duration:** 28 seconds
+* **Judging Focus:** Real-World Impact & Feasibility (25%)
+* **Visual:** Browser opens on `https://try-redline.vercel.app`. Paper-toned legal workbench, headline: *"Never sign an unfair contract."* Smooth scroll to presets.
+* **Voiceover:**
+  "Every single day, startups, agencies, and operators sign enterprise vendor agreements containing predatory traps.page eight hides a token one hundred dollar liability cap, while leaving your liability unlimited. Section six secretly takes rights to train artificial intelligence models on your proprietary company data. Hiring outside counsel costs eight hundred dollars an hour and takes three weeks. Founders cannot wait, so they sign blind. We built Redline to give every operator an attorney-grade contract safety instrument that audits incoming terms against open, neutral standards in seconds."
 
 ---
 
-## Time Budget Allocation
-
-| Criterion | Target Weight | Allocated Time | Percentage | Scenes |
-| :--- | :---: | :---: | :---: | :--- |
-| **Real-World Impact & Feasibility** | **25%** | 28s | 26.7% | Scene 1, Scene 6 |
-| **Technical Execution & Functionality** | **25%** | 27s | 25.7% | Scene 4, Scene 5 |
-| **User Experience & Design** | **20%** | 20s | 19.0% | Scene 3 |
-| **Innovation & Originality** | **15%** | 15s | 14.3% | Scene 2 |
-| **Presentation & Documentation** | **15%** | 15s | 14.3% | Scene 1, Scene 6 |
-| **Total Runtime** | **100%** | **105s (1:45)** | **100%** | **Scenes 1-6** |
+### Scene 2: 100% Client-Side Ingestion & Zero-Trust Privacy (0:28 - 0:54)
+* **Duration:** 26 seconds
+* **Judging Focus:** Technical Execution & Functionality (25%) + AI Safety & Privacy
+* **Visual:** Hover over the upload area. Click `+ Upload or paste your own contract` drawer, showing `.docx` dropzone. Switch standard tabs (SaaS, NDA, Services PSA).
+* **Voiceover:**
+  "Corporate contracts contain sensitive pricing, IP disclosures, and confidential trade secrets. They should never be uploaded to remote cloud servers or used to train third-party language models. Redline is architected with one hundred percent client-side execution. Our parser extracts structured OpenXML AST trees directly in your browser memory using Web Workers. Zero documents ever leave your machine, zero bytes are logged to a server, and zero telemetry is collected."
 
 ---
 
-## Submission Checklist
+### Scene 3: The 3 Predatory Presets & Progressive Disclosure UX (0:54 - 1:28)
+* **Duration:** 34 seconds
+* **Judging Focus:** User Experience & Design (20%) + Innovation & Originality (15%)
+* **Visual:** Click each preset in sequence:
+  1. *Enterprise SaaS MSA*: 6 traps, Grade F.
+  2. *Mutual NDA*: 3 traps, Grade F. Highlight Section 6 sneaked non-compete backdoor.
+  3. *Consulting MSA*: 4 traps, Grade F. Highlight Section 2 Net-90 delayed payout and pre-payment IP forfeiture.
+* **Voiceover:**
+  "Redline ships pre-loaded with three common predatory templates. First: an aggressive SaaS agreement with unlimited customer exposure and twenty percent annual price hikes. Second: a mutual NDA with a disguised two-year non-compete backdoor and perpetual confidentiality. Third: a consulting agreement forcing ninety-day delayed payouts and pre-payment intellectual property forfeiture. Notice our progressive disclosure: operators see the plain English business stakes first, while counsel can inspect exact clause numbers and statutory risk tiers."
 
-- [x] Live URL displayed: `https://try-redline.vercel.app`
-- [x] Open standard benchmarked: Common Paper Cloud Service Agreement & Mutual NDA (MIT)
-- [x] Native OpenXML tracked changes validated: Microsoft Word `<w:ins>` and `<w:del>`
-- [x] Real-world benchmark contracts: Aggressive SaaS, Unilateral NDA, Unfair Consulting
-- [x] Zero server storage: 100% client-side privacy verified
-- [x] Zero em dashes in narration text
+---
+
+### Scene 4: Open Standards vs. Prompt Engineering (1:28 - 1:52)
+* **Duration:** 24 seconds
+* **Judging Focus:** Innovation & Originality (15%) + Technical Execution (25%)
+* **Visual:** Click *"Why This Matters"* on Section 9 (Limitation of Liability). Open the Legal Clause Inspector drawer. Expand the legal diff accordion showing terracotta deletions and forest green insertions.
+* **Voiceover:**
+  "Instead of relying on unpredictable large language model prompts that hallucinate and vary on every run, Redline benchmarks contracts deterministically against open-source Common Paper standards. Common Paper agreements are MIT licensed, drafted and vetted by a committee of leading commercial attorneys. Our engine executes in under twenty milliseconds, comparing vendor wording against battle-tested market consensus."
+
+---
+
+### Scene 5: 1-Click Remediation & Scorecard Transformation (1:52 - 2:14)
+* **Duration:** 22 seconds
+* **Judging Focus:** User Experience & Design (20%) + Technical Execution (25%)
+* **Visual:** In the scorecard, click *"Accept All Common Paper Fixes"*. Watch the scorecard dynamically transition from red `F GRADE` to vibrant green `A REDLINED`. Status updates to *"✓ All 6 Traps Remediated (Grade A)"*.
+* **Voiceover:**
+  "Instead of tedious back-and-forth negotiations, operators can remediate the entire contract in one click. Clicking Accept All Common Paper Fixes runs our Myers diff engine in memory, replacing every predatory clause with balanced standard language. The scorecard instantly transforms from Grade F to Grade A Redlined, with full reversibility if you want to keep specific vendor terms."
+
+---
+
+### Scene 6: Authentic Microsoft Word Tracked Changes (.docx) & Pushback Memo (2:14 - 2:40)
+* **Duration:** 26 seconds
+* **Judging Focus:** Technical Execution & Functionality (25%) + Presentation & Documentation (15%)
+* **Visual:** Click *"Download Redline (.docx)"*. Export modal opens showing OpenXML guarantee. Download the `.docx` file. Switch to Executive Pushback Email tab, click *"Copy Email"*, showing green checkmark confirmation.
+* **Voiceover:**
+  "The critical technical breakthrough is the output format. Other tools give you a flat PDF or highlighted browser text that corporate legal departments reject. Redline synthesizes genuine Office OpenXML insertion and deletion nodes into a native Microsoft Word dot d-o-c-x file. When opposing counsel opens it in Microsoft Word or Google Docs, it renders authentic tracked revisions. Alongside the document, you get an executive pushback email ready to paste and send. Redline is live today at try-redline dot vercel dot app, completely open-source and free."
+
+---
+
+## Scene Timing Summary
+
+| Scene | Section | Duration | Cumulative | LexHack Judging Criteria Addressed |
+| :---: | :--- | :---: | :---: | :--- |
+| **1** | Commercial Crisis & Problem | 28s | 0:28 | Real-World Impact & Feasibility (25%) |
+| **2** | Client-Side Ingestion & Privacy | 26s | 0:54 | Technical Execution & AI Safety (25%) |
+| **3** | 3 Presets & Progressive Disclosure | 34s | 1:28 | User Experience & Design (20%) |
+| **4** | Open Standards vs. Prompt AI | 24s | 1:52 | Innovation & Originality (15%) |
+| **5** | 1-Click Batch Remediation | 22s | 2:14 | UX (20%) + Technical Execution (25%) |
+| **6** | Native Word OpenXML & Pushback Memo | 26s | 2:40 | Technical Execution (25%) + Presentation (15%) |
+| **Total** | **Full Walkthrough** | **160s (2:40)** | **2:40** | **Compliant with LexHack 2 to 3 minute rule** |
