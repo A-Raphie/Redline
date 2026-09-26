@@ -31,3 +31,9 @@ next-env.d.ts
 .vercel
 .chrome-tmp/
 *.png
+!videos/**/snapshots/*.png
+
+# Demo raw takes & video renders
+videos/**/*.wav
+videos/**/*.mp4
+*.mp4

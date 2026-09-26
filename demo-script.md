@@ -74,10 +74,10 @@
 
 | Scene | Section | Duration | Cumulative | LexHack Judging Criteria Addressed |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | Commercial Crisis & Problem | 28s | 0:28 | Real-World Impact & Feasibility (25%) |
-| **2** | Client-Side Ingestion & Privacy | 26s | 0:54 | Technical Execution & AI Safety (25%) |
-| **3** | 3 Presets & Progressive Disclosure | 34s | 1:28 | User Experience & Design (20%) |
-| **4** | Open Standards vs. Prompt AI | 24s | 1:52 | Innovation & Originality (15%) |
-| **5** | 1-Click Batch Remediation | 22s | 2:14 | UX (20%) + Technical Execution (25%) |
-| **6** | Native Word OpenXML & Pushback Memo | 26s | 2:40 | Technical Execution (25%) + Presentation (15%) |
-| **Total** | **Full Walkthrough** | **160s (2:40)** | **2:40** | **Compliant with LexHack 2 to 3 minute rule** |
+| **1** | Commercial Crisis & Problem | 35.2s | 0:35 | Real-World Impact & Feasibility (25%) |
+| **2** | Client-Side Ingestion & Privacy | 28.0s | 1:03 | Technical Execution & AI Safety (25%) |
+| **3** | 3 Presets & Progressive Disclosure | 33.2s | 1:36 | User Experience & Design (20%) |
+| **4** | Open Standards vs. Prompt AI | 23.8s | 2:00 | Innovation & Originality (15%) |
+| **5** | 1-Click Batch Remediation | 22.4s | 2:23 | UX (20%) + Technical Execution (25%) |
+| **6** | Native Word OpenXML & Pushback Memo | 33.5s | 2:56 | Technical Execution (25%) + Presentation (15%) |
+| **Total** | **Full Walkthrough** | **176.1s (2:56)** | **2:56** | **Strictly compliant with LexHack 2 to 3 minute rule (<180s cap)** |
