@@ -29,12 +29,14 @@
       }
 
       :root {
-        --chrome-tabstrip-bg: #1e1f22;
-        --chrome-toolbar-bg: #2b2d30;
-        --chrome-omnibox-bg: #1e1f22;
+        --chrome-tabstrip-bg: #182314;
+        --chrome-toolbar-bg: #333f2f;
+        --chrome-omnibox-bg: #1e291a;
+        --chrome-tune-pill: #283623;
         --chrome-text-primary: #e3e3e3;
-        --chrome-text-secondary: #9aa0a6;
-        --chrome-icon-color: #c4c7c5;
+        --chrome-text-secondary: #a3b09d;
+        --chrome-icon-color: #c0ccc1;
+        --chrome-divider: rgba(255, 255, 255, 0.16);
       }
 
       /* Scene Container */
@@ -57,9 +59,9 @@
         overflow: hidden;
       }
 
-      /* Authentic Google Chrome Header (80px total height) */
+      /* Authentic Google Chrome Header (118px total height) */
       .chrome-header {
-        height: 80px;
+        height: 118px;
         background: var(--chrome-tabstrip-bg);
         display: flex;
         flex-direction: column;
@@ -67,9 +69,10 @@
         z-index: 40;
       }
 
-      /* Tabstrip Row (Height: 38px) */
+      /* Tabstrip Row (Height: 42px) */
       .chrome-tabstrip-row {
-        height: 38px;
+        height: 42px;
+        background: var(--chrome-tabstrip-bg);
         display: flex;
         align-items: flex-end;
         padding: 0 16px;
@@ -78,12 +81,12 @@
 
       /* macOS Traffic Lights */
       .traffic-lights {
+        position: absolute;
+        left: 18px;
+        top: 15px;
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-bottom: 12px;
-        margin-right: 18px;
-        padding-left: 2px;
       }
       .traffic-light {
         width: 12px;
@@ -107,10 +110,11 @@
       /* The Chrome Tab Container with Inverted Fillets */
       .chrome-tab-wrapper {
         position: relative;
+        margin-left: 64px;
+        height: 34px;
+        width: 265px;
         display: flex;
         align-items: flex-end;
-        height: 34px;
-        width: 320px;
         z-index: 10;
       }
 
@@ -118,12 +122,12 @@
         width: 100%;
         height: 34px;
         background: var(--chrome-toolbar-bg);
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         display: flex;
         align-items: center;
-        padding: 0 12px;
-        gap: 9px;
+        padding: 0 10px 0 12px;
+        gap: 8px;
       }
 
       /* SVG Inverted Fillets for Chrome Tab */
@@ -155,9 +159,9 @@
         flex-shrink: 0;
       }
       .tab-title {
-        font-size: 12px;
+        font-size: 12.5px;
         font-weight: 400;
-        color: var(--chrome-text-primary);
+        color: #e3e3e3;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -165,40 +169,60 @@
         letter-spacing: -0.01em;
       }
       .tab-close {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--chrome-text-secondary);
-        font-size: 10px;
+        font-size: 11px;
         cursor: pointer;
       }
 
       /* New Tab Button (+) */
       .new-tab-btn {
-        width: 28px;
-        height: 28px;
+        width: 26px;
+        height: 26px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--chrome-icon-color);
-        margin-left: 14px;
-        margin-bottom: 3px;
+        margin-left: 8px;
+        margin-bottom: 4px;
         cursor: pointer;
       }
 
-      /* Toolbar Row (Height: 42px) */
+      /* Ask Gemini Pill on Right */
+      .tabstrip-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        margin-bottom: 7px;
+      }
+      .gemini-pill {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 9999px;
+        padding: 4px 12px;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      /* Toolbar Row (Height: 44px) */
       .chrome-toolbar {
-        height: 42px;
+        height: 44px;
         background: var(--chrome-toolbar-bg);
         display: flex;
         align-items: center;
         padding: 0 14px;
-        gap: 12px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+        gap: 10px;
         position: relative;
         z-index: 5;
       }
@@ -227,15 +251,14 @@
       /* Omnibox (Address Bar) */
       .chrome-omnibox {
         flex: 1;
-        max-width: 920px;
-        margin: 0 auto;
         height: 34px;
         background: var(--chrome-omnibox-bg);
         border-radius: 9999px;
         display: flex;
         align-items: center;
-        padding: 0 14px 0 8px;
+        padding: 0 8px 0 6px;
         gap: 8px;
+        position: relative;
       }
 
       /* Page Info / Tune Icon Pill */
@@ -243,9 +266,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
+        background: var(--chrome-tune-pill);
+        border-radius: 9999px;
+        padding: 2px 8px;
+        height: 24px;
         color: var(--chrome-icon-color);
       }
 
@@ -260,8 +284,8 @@
         letter-spacing: -0.01em;
       }
       .url-domain {
-        color: var(--chrome-text-primary);
-        font-weight: 500;
+        color: #f1f3f4;
+        font-weight: 400;
       }
       .url-path {
         color: var(--chrome-text-secondary);
@@ -269,10 +293,14 @@
       }
 
       .omnibox-star {
-        color: var(--chrome-text-secondary);
+        width: 28px;
+        height: 28px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        color: var(--chrome-icon-color);
         cursor: pointer;
+        margin-right: 4px;
       }
 
       /* Right Toolbar Actions */
@@ -281,38 +309,79 @@
         align-items: center;
         gap: 8px;
         color: var(--chrome-icon-color);
+        padding-right: 2px;
+      }
+      .tb-divider {
+        width: 1px;
+        height: 16px;
+        background: var(--chrome-divider);
+        margin: 0 2px;
       }
       .profile-avatar {
         width: 26px;
         height: 26px;
         border-radius: 50%;
-        background: #1B365D;
+        background: #c2410c;
         color: #fff;
         font-size: 12px;
         font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(255, 255, 255, 0.12);
       }
 
-      /* Maximized Web Viewport: 1920x1000 */
+      /* Chrome Bookmarks Bar (Height: 32px) */
+      .chrome-bookmarks-bar {
+        height: 32px;
+        background: var(--chrome-toolbar-bg);
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        font-size: 12px;
+        color: var(--chrome-text-secondary);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+      }
+      .side-panel-btn {
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--chrome-icon-color);
+        cursor: pointer;
+      }
+      .bookmarks-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--chrome-text-primary);
+        font-size: 12px;
+      }
+      .bm-divider {
+        width: 1px;
+        height: 16px;
+        background: var(--chrome-divider);
+        margin-right: 6px;
+      }
+
+      /* Maximized Web Viewport: 1920x962 */
       .browser-body {
         width: 1920px;
-        height: 1000px;
+        height: 962px;
         overflow: hidden;
         background: #0b1120;
         position: relative;
       }
       .zoom-container {
         width: 1920px;
-        height: 1000px;
+        height: 962px;
         transform-origin: center center;
         will-change: transform;
       }
       .screencast-video {
         width: 1920px;
-        height: 1000px;
+        height: 962px;
         object-fit: cover;
         object-position: top center;
         display: block;
@@ -395,7 +464,8 @@
       <!-- ============================================================== -->
       <div id="scene-1" class="scene-container">
         <div class="browser-mockup">
-          <div class="chrome-header">
+                    <div class="chrome-header">
+            <!-- TAB STRIP -->
             <div class="chrome-tabstrip-row">
               <div class="traffic-lights">
                 <div class="traffic-light red"></div>
@@ -403,7 +473,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -413,26 +483,43 @@
                   <span class="tab-title">Redline | B2B Contract Audit</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
+              <div class="tabstrip-right">
+                <div class="gemini-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#gemini-grad)"/>
+                    <defs>
+                      <linearGradient id="gemini-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4E82EE"/>
+                        <stop offset="0.5" stop-color="#E172CE"/>
+                        <stop offset="1" stop-color="#F28B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  Ask Gemini
+                </div>
+              </div>
             </div>
+
+            <!-- TOOLBAR -->
             <div class="chrome-toolbar">
               <div class="nav-buttons">
-                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
-                <div class="icon-btn disabled"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
+                <div class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+                <div class="icon-btn disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
               </div>
               <div class="chrome-omnibox">
                 <div class="tune-chip">
-                  <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M3 4.5h6v1H3v-1zm0 10h6v1H3v-1zm0-5h10v1H3v-1zm14 0h-2.5v-1.5h-1v4h1V10.5H17v-1zm-6-5h-1V3h-1v4h1V5.5H17v-1h-6zm4 10h-1v-1.5h-1v4h1V16H17v-1h-2z"/>
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M3 5h4.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-5.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm6.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-6.5 11h9.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-2.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm11.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                   </svg>
                 </div>
                 <div class="url-container">
-                  <span class="url-domain">try-redline.vercel.app</span><span class="url-path">/</span>
+                  <span class="url-domain">try-redline.vercel.app</span><span class="url-path"></span>
                 </div>
                 <div class="omnibox-star">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -440,16 +527,34 @@
               </div>
               <div class="toolbar-actions">
                 <div class="icon-btn">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19.439 7.85c-.049-.322-.24-.606-.525-.773A6.996 6.996 0 0 0 15 6.071V4.5a2.5 2.5 0 0 0-5 0v1.571a6.996 6.996 0 0 0-3.914 1.006c-.285.167-.476.451-.525.773A6.974 6.974 0 0 0 5 9.5a7 7 0 0 0 1.071 3.914c.167.285.451.476.773.525A6.996 6.996 0 0 0 8.429 15H9.5a2.5 2.5 0 0 0 0 5h1.071a6.996 6.996 0 0 0 3.914-1.071c.285-.167.476-.451.525-.773A6.974 6.974 0 0 0 16 16.5a7 7 0 0 0-1.071-3.914c-.167-.285-.451-.476-.773-.525A6.996 6.996 0 0 0 12.571 11H14.5a2.5 2.5 0 0 0 5 0h-.061z"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
                 </div>
+                <div class="tb-divider"></div>
                 <div class="profile-avatar">R</div>
                 <div class="icon-btn">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/>
                   </svg>
                 </div>
+              </div>
+            </div>
+
+            <!-- BOOKMARKS BAR -->
+            <div class="chrome-bookmarks-bar">
+              <div class="side-panel-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="bookmarks-right">
+                <div class="bm-divider"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>All Bookmarks</span>
               </div>
             </div>
           </div>
@@ -468,7 +573,8 @@
       <!-- ============================================================== -->
       <div id="scene-2" class="scene-container">
         <div class="browser-mockup">
-          <div class="chrome-header">
+                    <div class="chrome-header">
+            <!-- TAB STRIP -->
             <div class="chrome-tabstrip-row">
               <div class="traffic-lights">
                 <div class="traffic-light red"></div>
@@ -476,7 +582,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -486,22 +592,39 @@
                   <span class="tab-title">Redline | Privacy Architecture</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
+              <div class="tabstrip-right">
+                <div class="gemini-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#gemini-grad)"/>
+                    <defs>
+                      <linearGradient id="gemini-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4E82EE"/>
+                        <stop offset="0.5" stop-color="#E172CE"/>
+                        <stop offset="1" stop-color="#F28B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  Ask Gemini
+                </div>
+              </div>
             </div>
+
+            <!-- TOOLBAR -->
             <div class="chrome-toolbar">
               <div class="nav-buttons">
-                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
-                <div class="icon-btn disabled"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
+                <div class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+                <div class="icon-btn disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
               </div>
               <div class="chrome-omnibox">
                 <div class="tune-chip">
-                  <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M3 4.5h6v1H3v-1zm0 10h6v1H3v-1zm0-5h10v1H3v-1zm14 0h-2.5v-1.5h-1v4h1V10.5H17v-1zm-6-5h-1V3h-1v4h1V5.5H17v-1h-6zm4 10h-1v-1.5h-1v4h1V16H17v-1h-2z"/>
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M3 5h4.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-5.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm6.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-6.5 11h9.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-2.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm11.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                   </svg>
                 </div>
                 <div class="url-container">
@@ -513,16 +636,34 @@
               </div>
               <div class="toolbar-actions">
                 <div class="icon-btn">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19.439 7.85c-.049-.322-.24-.606-.525-.773A6.996 6.996 0 0 0 15 6.071V4.5a2.5 2.5 0 0 0-5 0v1.571a6.996 6.996 0 0 0-3.914 1.006c-.285.167-.476.451-.525.773A6.974 6.974 0 0 0 5 9.5a7 7 0 0 0 1.071 3.914c.167.285.451.476.773.525A6.996 6.996 0 0 0 8.429 15H9.5a2.5 2.5 0 0 0 0 5h1.071a6.996 6.996 0 0 0 3.914-1.071c.285-.167.476-.451.525-.773A6.974 6.974 0 0 0 16 16.5a7 7 0 0 0-1.071-3.914c-.167-.285-.451-.476-.773-.525A6.996 6.996 0 0 0 12.571 11H14.5a2.5 2.5 0 0 0 5 0h-.061z"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
                 </div>
+                <div class="tb-divider"></div>
                 <div class="profile-avatar">R</div>
                 <div class="icon-btn">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/>
                   </svg>
                 </div>
+              </div>
+            </div>
+
+            <!-- BOOKMARKS BAR -->
+            <div class="chrome-bookmarks-bar">
+              <div class="side-panel-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="bookmarks-right">
+                <div class="bm-divider"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>All Bookmarks</span>
               </div>
             </div>
           </div>
@@ -541,7 +682,8 @@
       <!-- ============================================================== -->
       <div id="scene-3" class="scene-container">
         <div class="browser-mockup">
-          <div class="chrome-header">
+                    <div class="chrome-header">
+            <!-- TAB STRIP -->
             <div class="chrome-tabstrip-row">
               <div class="traffic-lights">
                 <div class="traffic-light red"></div>
@@ -549,7 +691,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -559,22 +701,39 @@
                   <span class="tab-title">Redline | Predatory Archetypes</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
+              <div class="tabstrip-right">
+                <div class="gemini-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#gemini-grad)"/>
+                    <defs>
+                      <linearGradient id="gemini-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4E82EE"/>
+                        <stop offset="0.5" stop-color="#E172CE"/>
+                        <stop offset="1" stop-color="#F28B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  Ask Gemini
+                </div>
+              </div>
             </div>
+
+            <!-- TOOLBAR -->
             <div class="chrome-toolbar">
               <div class="nav-buttons">
-                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
-                <div class="icon-btn disabled"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
+                <div class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+                <div class="icon-btn disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
               </div>
               <div class="chrome-omnibox">
                 <div class="tune-chip">
-                  <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M3 4.5h6v1H3v-1zm0 10h6v1H3v-1zm0-5h10v1H3v-1zm14 0h-2.5v-1.5h-1v4h1V10.5H17v-1zm-6-5h-1V3h-1v4h1V5.5H17v-1h-6zm4 10h-1v-1.5h-1v4h1V16H17v-1h-2z"/>
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M3 5h4.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-5.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm6.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-6.5 11h9.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-2.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm11.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                   </svg>
                 </div>
                 <div class="url-container">
@@ -586,16 +745,34 @@
               </div>
               <div class="toolbar-actions">
                 <div class="icon-btn">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19.439 7.85c-.049-.322-.24-.606-.525-.773A6.996 6.996 0 0 0 15 6.071V4.5a2.5 2.5 0 0 0-5 0v1.571a6.996 6.996 0 0 0-3.914 1.006c-.285.167-.476.451-.525.773A6.974 6.974 0 0 0 5 9.5a7 7 0 0 0 1.071 3.914c.167.285.451.476.773.525A6.996 6.996 0 0 0 8.429 15H9.5a2.5 2.5 0 0 0 0 5h1.071a6.996 6.996 0 0 0 3.914-1.071c.285-.167.476-.451.525-.773A6.974 6.974 0 0 0 16 16.5a7 7 0 0 0-1.071-3.914c-.167-.285-.451-.476-.773-.525A6.996 6.996 0 0 0 12.571 11H14.5a2.5 2.5 0 0 0 5 0h-.061z"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
                 </div>
+                <div class="tb-divider"></div>
                 <div class="profile-avatar">R</div>
                 <div class="icon-btn">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/>
                   </svg>
                 </div>
+              </div>
+            </div>
+
+            <!-- BOOKMARKS BAR -->
+            <div class="chrome-bookmarks-bar">
+              <div class="side-panel-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="bookmarks-right">
+                <div class="bm-divider"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>All Bookmarks</span>
               </div>
             </div>
           </div>
@@ -614,7 +791,8 @@
       <!-- ============================================================== -->
       <div id="scene-4" class="scene-container">
         <div class="browser-mockup">
-          <div class="chrome-header">
+                    <div class="chrome-header">
+            <!-- TAB STRIP -->
             <div class="chrome-tabstrip-row">
               <div class="traffic-lights">
                 <div class="traffic-light red"></div>
@@ -622,7 +800,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -632,22 +810,39 @@
                   <span class="tab-title">Redline | Standard Benchmarks</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
+              <div class="tabstrip-right">
+                <div class="gemini-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#gemini-grad)"/>
+                    <defs>
+                      <linearGradient id="gemini-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4E82EE"/>
+                        <stop offset="0.5" stop-color="#E172CE"/>
+                        <stop offset="1" stop-color="#F28B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  Ask Gemini
+                </div>
+              </div>
             </div>
+
+            <!-- TOOLBAR -->
             <div class="chrome-toolbar">
               <div class="nav-buttons">
-                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
-                <div class="icon-btn disabled"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
+                <div class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+                <div class="icon-btn disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
               </div>
               <div class="chrome-omnibox">
                 <div class="tune-chip">
-                  <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M3 4.5h6v1H3v-1zm0 10h6v1H3v-1zm0-5h10v1H3v-1zm14 0h-2.5v-1.5h-1v4h1V10.5H17v-1zm-6-5h-1V3h-1v4h1V5.5H17v-1h-6zm4 10h-1v-1.5h-1v4h1V16H17v-1h-2z"/>
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M3 5h4.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-5.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm6.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-6.5 11h9.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-2.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm11.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                   </svg>
                 </div>
                 <div class="url-container">
@@ -659,16 +854,34 @@
               </div>
               <div class="toolbar-actions">
                 <div class="icon-btn">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19.439 7.85c-.049-.322-.24-.606-.525-.773A6.996 6.996 0 0 0 15 6.071V4.5a2.5 2.5 0 0 0-5 0v1.571a6.996 6.996 0 0 0-3.914 1.006c-.285.167-.476.451-.525.773A6.974 6.974 0 0 0 5 9.5a7 7 0 0 0 1.071 3.914c.167.285.451.476.773.525A6.996 6.996 0 0 0 8.429 15H9.5a2.5 2.5 0 0 0 0 5h1.071a6.996 6.996 0 0 0 3.914-1.071c.285-.167.476-.451.525-.773A6.974 6.974 0 0 0 16 16.5a7 7 0 0 0-1.071-3.914c-.167-.285-.451-.476-.773-.525A6.996 6.996 0 0 0 12.571 11H14.5a2.5 2.5 0 0 0 5 0h-.061z"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
                 </div>
+                <div class="tb-divider"></div>
                 <div class="profile-avatar">R</div>
                 <div class="icon-btn">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/>
                   </svg>
                 </div>
+              </div>
+            </div>
+
+            <!-- BOOKMARKS BAR -->
+            <div class="chrome-bookmarks-bar">
+              <div class="side-panel-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="bookmarks-right">
+                <div class="bm-divider"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>All Bookmarks</span>
               </div>
             </div>
           </div>
@@ -687,7 +900,8 @@
       <!-- ============================================================== -->
       <div id="scene-5" class="scene-container">
         <div class="browser-mockup">
-          <div class="chrome-header">
+                    <div class="chrome-header">
+            <!-- TAB STRIP -->
             <div class="chrome-tabstrip-row">
               <div class="traffic-lights">
                 <div class="traffic-light red"></div>
@@ -695,7 +909,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -705,22 +919,39 @@
                   <span class="tab-title">Redline | Batch Remediation</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
+              <div class="tabstrip-right">
+                <div class="gemini-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#gemini-grad)"/>
+                    <defs>
+                      <linearGradient id="gemini-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4E82EE"/>
+                        <stop offset="0.5" stop-color="#E172CE"/>
+                        <stop offset="1" stop-color="#F28B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  Ask Gemini
+                </div>
+              </div>
             </div>
+
+            <!-- TOOLBAR -->
             <div class="chrome-toolbar">
               <div class="nav-buttons">
-                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
-                <div class="icon-btn disabled"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
+                <div class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+                <div class="icon-btn disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
               </div>
               <div class="chrome-omnibox">
                 <div class="tune-chip">
-                  <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M3 4.5h6v1H3v-1zm0 10h6v1H3v-1zm0-5h10v1H3v-1zm14 0h-2.5v-1.5h-1v4h1V10.5H17v-1zm-6-5h-1V3h-1v4h1V5.5H17v-1h-6zm4 10h-1v-1.5h-1v4h1V16H17v-1h-2z"/>
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M3 5h4.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-5.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm6.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-6.5 11h9.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-2.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm11.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                   </svg>
                 </div>
                 <div class="url-container">
@@ -732,16 +963,34 @@
               </div>
               <div class="toolbar-actions">
                 <div class="icon-btn">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19.439 7.85c-.049-.322-.24-.606-.525-.773A6.996 6.996 0 0 0 15 6.071V4.5a2.5 2.5 0 0 0-5 0v1.571a6.996 6.996 0 0 0-3.914 1.006c-.285.167-.476.451-.525.773A6.974 6.974 0 0 0 5 9.5a7 7 0 0 0 1.071 3.914c.167.285.451.476.773.525A6.996 6.996 0 0 0 8.429 15H9.5a2.5 2.5 0 0 0 0 5h1.071a6.996 6.996 0 0 0 3.914-1.071c.285-.167.476-.451.525-.773A6.974 6.974 0 0 0 16 16.5a7 7 0 0 0-1.071-3.914c-.167-.285-.451-.476-.773-.525A6.996 6.996 0 0 0 12.571 11H14.5a2.5 2.5 0 0 0 5 0h-.061z"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
                 </div>
+                <div class="tb-divider"></div>
                 <div class="profile-avatar">R</div>
                 <div class="icon-btn">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/>
                   </svg>
                 </div>
+              </div>
+            </div>
+
+            <!-- BOOKMARKS BAR -->
+            <div class="chrome-bookmarks-bar">
+              <div class="side-panel-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="bookmarks-right">
+                <div class="bm-divider"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>All Bookmarks</span>
               </div>
             </div>
           </div>
@@ -760,7 +1009,8 @@
       <!-- ============================================================== -->
       <div id="scene-6" class="scene-container">
         <div class="browser-mockup">
-          <div class="chrome-header">
+                    <div class="chrome-header">
+            <!-- TAB STRIP -->
             <div class="chrome-tabstrip-row">
               <div class="traffic-lights">
                 <div class="traffic-light red"></div>
@@ -768,7 +1018,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -778,22 +1028,39 @@
                   <span class="tab-title">Redline | Production Export</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#2b2d30"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </div>
+              <div class="tabstrip-right">
+                <div class="gemini-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#gemini-grad)"/>
+                    <defs>
+                      <linearGradient id="gemini-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4E82EE"/>
+                        <stop offset="0.5" stop-color="#E172CE"/>
+                        <stop offset="1" stop-color="#F28B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  Ask Gemini
+                </div>
+              </div>
             </div>
+
+            <!-- TOOLBAR -->
             <div class="chrome-toolbar">
               <div class="nav-buttons">
-                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
-                <div class="icon-btn disabled"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
+                <div class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+                <div class="icon-btn disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                <div class="icon-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg></div>
               </div>
               <div class="chrome-omnibox">
                 <div class="tune-chip">
-                  <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M3 4.5h6v1H3v-1zm0 10h6v1H3v-1zm0-5h10v1H3v-1zm14 0h-2.5v-1.5h-1v4h1V10.5H17v-1zm-6-5h-1V3h-1v4h1V5.5H17v-1h-6zm4 10h-1v-1.5h-1v4h1V16H17v-1h-2z"/>
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M3 5h4.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-5.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm6.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-6.5 11h9.1a2.5 2.5 0 0 0 4.8 0H17a.75.75 0 0 0 0-1.5h-2.1a2.5 2.5 0 0 0-4.8 0H3a.75.75 0 0 0 0 1.5zm11.5-1.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                   </svg>
                 </div>
                 <div class="url-container">
@@ -805,16 +1072,34 @@
               </div>
               <div class="toolbar-actions">
                 <div class="icon-btn">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19.439 7.85c-.049-.322-.24-.606-.525-.773A6.996 6.996 0 0 0 15 6.071V4.5a2.5 2.5 0 0 0-5 0v1.571a6.996 6.996 0 0 0-3.914 1.006c-.285.167-.476.451-.525.773A6.974 6.974 0 0 0 5 9.5a7 7 0 0 0 1.071 3.914c.167.285.451.476.773.525A6.996 6.996 0 0 0 8.429 15H9.5a2.5 2.5 0 0 0 0 5h1.071a6.996 6.996 0 0 0 3.914-1.071c.285-.167.476-.451.525-.773A6.974 6.974 0 0 0 16 16.5a7 7 0 0 0-1.071-3.914c-.167-.285-.451-.476-.773-.525A6.996 6.996 0 0 0 12.571 11H14.5a2.5 2.5 0 0 0 5 0h-.061z"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
                 </div>
+                <div class="tb-divider"></div>
                 <div class="profile-avatar">R</div>
                 <div class="icon-btn">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/>
                   </svg>
                 </div>
+              </div>
+            </div>
+
+            <!-- BOOKMARKS BAR -->
+            <div class="chrome-bookmarks-bar">
+              <div class="side-panel-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="bookmarks-right">
+                <div class="bm-divider"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>All Bookmarks</span>
               </div>
             </div>
           </div>
