@@ -1,5 +1,8 @@
 {
   "$schema": "https://hyperframes.heygen.com/schema/hyperframes.json",
+  "width": 2560,
+  "height": 1440,
+  "fps": 30,
   "registry": "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry",
   "paths": {
     "blocks": "compositions",

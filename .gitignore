@@ -32,6 +32,8 @@ next-env.d.ts
 .chrome-tmp/
 *.png
 !videos/**/snapshots/*.png
+!screenshots/*.png
+!thumbnail.png
 
 # Demo raw takes & video renders
 videos/**/*.wav

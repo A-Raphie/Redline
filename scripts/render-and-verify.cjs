@@ -40,11 +40,11 @@ try {
 }
 
 console.log('\n=====================================================');
-console.log('🎬 Step 3: Rendering Master 1080p Delivery Video (12M Bitrate)');
+console.log('🎬 Step 3: Rendering Master 2K / 1440p Delivery Video (30M Bitrate)');
 console.log('=====================================================');
 
 const masterOutput = path.join(RENDERS_DIR, 'redline-showcase-master.mp4');
-execSync(`npx --yes hyperframes@0.8.50 render --quality=delivery --video-bitrate=12M -o "${masterOutput}"`, {
+execSync(`npx --yes hyperframes@0.8.50 render --quality=delivery --video-bitrate=30M -o "${masterOutput}"`, {
   cwd: SHOWCASE_DIR,
   stdio: 'inherit'
 });
@@ -52,11 +52,11 @@ execSync(`npx --yes hyperframes@0.8.50 render --quality=delivery --video-bitrate
 console.log(`\n🎉 Master Delivery Video Rendered: ${masterOutput}`);
 
 console.log('\n=====================================================');
-console.log('📱 Step 4: Re-encoding Mobile / Telegram Fast-Streaming Version (<50MB)');
+console.log('📱 Step 4: Re-encoding Mobile / Web High-Clarity Version (CRF 16)');
 console.log('=====================================================');
 
 const mobileOutput = path.join(RENDERS_DIR, 'redline-showcase-mobile.mp4');
-execSync(`ffmpeg -y -i "${masterOutput}" -c:v libx264 -crf 22 -preset medium -pix_fmt yuv420p -c:a copy "${mobileOutput}"`, {
+execSync(`ffmpeg -y -i "${masterOutput}" -c:v libx264 -crf 16 -preset slow -pix_fmt yuv420p -c:a copy "${mobileOutput}"`, {
   stdio: 'inherit'
 });
 

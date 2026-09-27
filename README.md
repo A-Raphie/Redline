@@ -8,11 +8,23 @@ Audit incoming B2B vendor contracts against open standards and push back with na
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20Client--Side-4A5568?style=flat-square)](https://try-redline.vercel.app)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
-[Live App](https://try-redline.vercel.app) · [Proof Table](#verified-benchmark-proof) · [Honesty Table](#honesty-table) · [How it Works](#how-it-works) · [Run Locally](#run-locally) · [Built by Raphie](https://x.com/a_raphie)
+[Live App](https://try-redline.vercel.app) · [Demo Video (Vimeo)](https://vimeo.com/1230735210) · [Devpost](https://devpost.com/software/redline-gn4wp6) · [Proof Table](#verified-benchmark-proof) · [Honesty Table](#honesty-table) · [How it Works](#how-it-works) · [Run Locally](#run-locally) · [Built by Raphie](https://x.com/a_raphie)
 
 Most enterprise vendor contracts hide one-sided traps: token liability caps ($100), unilateral AI data training rights, and 90-day renewal traps. Redline audits agreements against open Common Paper standard terms in your browser, translates legal risks into plain English, and generates attorney-grade Word `.docx` documents with native tracked changes (`<w:ins>` and `<w:del>`).
 
+![Redline Contract Audit Scorecard](thumbnail.png)
+
 ---
+
+## Visual Interface Gallery
+
+| 01. Grade F Audit Scorecard | 02. Client-Side Privacy Guarantees |
+| :---: | :---: |
+| ![Grade F Scorecard](screenshots/01-hero-grade-f-scorecard.png) | ![Client-Side Privacy](screenshots/02-client-side-privacy.png) |
+| **03. Predatory Trap Detection** | **04. Common Paper AST Diff** |
+| ![Predatory Traps](screenshots/03-predatory-trap-detection.png) | ![AST Diff](screenshots/04-common-paper-ast-diff.png) |
+| **05. 1-Click Batch Remediation (Grade A)** | **06. Native Word .docx Revisions** |
+| ![Grade A Remediation](screenshots/05-grade-a-batch-remediation.png) | ![Word Revisions](screenshots/06-word-docx-tracked-changes.png) |
 
 ## Verified Benchmark Proof
 

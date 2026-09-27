@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+    <meta name="viewport" content="width=2560, height=1440, initial-scale=1.0" />
     <title>Redline Showcase Master - LexHack 2026</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
@@ -13,17 +13,17 @@
       }
       body {
         background-color: #0c121e;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         overflow: hidden;
-        width: 1920px;
-        height: 1080px;
+        width: 2560px;
+        height: 1440px;
         color: #f8fafc;
         -webkit-font-smoothing: antialiased;
       }
       #root {
         position: relative;
-        width: 1920px;
-        height: 1080px;
+        width: 2560px;
+        height: 1440px;
         background: #0c121e;
         overflow: hidden;
       }
@@ -34,17 +34,18 @@
         --chrome-omnibox-bg: #1e291a;
         --chrome-tune-pill: #283623;
         --chrome-text-primary: #e3e3e3;
-        --chrome-text-secondary: #a3b09d;
-        --chrome-icon-color: #c0ccc1;
-        --chrome-divider: rgba(255, 255, 255, 0.16);
+        --chrome-text-secondary: #9aa0a6;
+        --chrome-icon-color: #c4c7c5;
+        --chrome-divider: rgba(255, 255, 255, 0.12);
+        --profile-avatar-bg: #c2410c;
       }
 
       /* Scene Container */
       .scene-container {
         position: absolute;
         inset: 0;
-        width: 1920px;
-        height: 1080px;
+        width: 2560px;
+        height: 1440px;
         background: #0c121e;
         overflow: hidden;
       }
@@ -53,44 +54,51 @@
       .browser-mockup {
         position: absolute;
         inset: 0;
+        width: 2560px;
+        height: 1440px;
         display: flex;
         flex-direction: column;
-        background: #0f172a;
+        background: #0b1120;
         overflow: hidden;
       }
 
-      /* Authentic Google Chrome Header (118px total height) */
+      /* Authentic Google Chrome Header (2K / 1440p) - Total Height: 142px */
       .chrome-header {
-        height: 118px;
-        background: var(--chrome-tabstrip-bg);
+        width: 2560px;
+        height: 142px;
+        background: var(--chrome-toolbar-bg);
         display: flex;
         flex-direction: column;
         user-select: none;
-        z-index: 40;
+        flex-shrink: 0;
+        z-index: 100;
       }
 
-      /* Tabstrip Row (Height: 42px) */
+      /* 1. Tabstrip Row (Height: 48px) - Flush tab touching top y=0 */
       .chrome-tabstrip-row {
-        height: 42px;
+        height: 48px;
         background: var(--chrome-tabstrip-bg);
         display: flex;
         align-items: flex-end;
-        padding: 0 16px;
         position: relative;
+        padding-left: 0;
+        padding-right: 18px;
+        z-index: 10;
       }
 
       /* macOS Traffic Lights */
       .traffic-lights {
         position: absolute;
-        left: 18px;
-        top: 15px;
+        top: 17px;
+        left: 24px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
+        z-index: 20;
       }
       .traffic-light {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
         position: relative;
       }
@@ -107,12 +115,12 @@
         border: 0.5px solid rgba(0, 0, 0, 0.25);
       }
 
-      /* The Chrome Tab Container with Inverted Fillets */
+      /* The Chrome Tab Container with Inverted Fillets (Height: 48px flush at y=0) */
       .chrome-tab-wrapper {
         position: relative;
-        margin-left: 64px;
-        height: 34px;
-        width: 265px;
+        margin-left: 92px;
+        height: 48px;
+        width: 350px;
         display: flex;
         align-items: flex-end;
         z-index: 10;
@@ -120,38 +128,38 @@
 
       .chrome-tab {
         width: 100%;
-        height: 34px;
+        height: 48px;
         background: var(--chrome-toolbar-bg);
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
         display: flex;
         align-items: center;
-        padding: 0 10px 0 12px;
-        gap: 8px;
+        padding: 0 14px 0 16px;
+        gap: 10px;
       }
 
       /* SVG Inverted Fillets for Chrome Tab */
       .tab-fillet-left {
         position: absolute;
-        left: -8px;
+        left: -10px;
         bottom: 0;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         pointer-events: none;
       }
       .tab-fillet-right {
         position: absolute;
-        right: -8px;
+        right: -10px;
         bottom: 0;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         pointer-events: none;
       }
 
       .tab-favicon {
-        width: 16px;
-        height: 16px;
-        border-radius: 4px;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
         background: #1B365D;
         display: flex;
         align-items: center;
@@ -159,7 +167,7 @@
         flex-shrink: 0;
       }
       .tab-title {
-        font-size: 12.5px;
+        font-size: 15px;
         font-weight: 400;
         color: #e3e3e3;
         white-space: nowrap;
@@ -169,28 +177,28 @@
         letter-spacing: -0.01em;
       }
       .tab-close {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--chrome-text-secondary);
-        font-size: 11px;
+        color: #b0b7bd;
+        font-size: 13px;
         cursor: pointer;
       }
 
       /* New Tab Button (+) */
       .new-tab-btn {
-        width: 26px;
-        height: 26px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--chrome-icon-color);
-        margin-left: 8px;
-        margin-bottom: 4px;
+        margin-left: 10px;
+        margin-bottom: 6px;
         cursor: pointer;
       }
 
@@ -199,44 +207,44 @@
         margin-left: auto;
         display: flex;
         align-items: center;
-        margin-bottom: 7px;
+        margin-bottom: 9px;
       }
       .gemini-pill {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 9999px;
-        padding: 4px 12px;
+        padding: 5px 15px;
         color: #ffffff;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
         cursor: pointer;
       }
 
-      /* Toolbar Row (Height: 44px) */
+      /* 2. Toolbar Row (Height: 56px) */
       .chrome-toolbar {
-        height: 44px;
+        height: 56px;
         background: var(--chrome-toolbar-bg);
         display: flex;
         align-items: center;
-        padding: 0 14px;
-        gap: 10px;
+        padding: 0 18px;
+        gap: 14px;
         position: relative;
         z-index: 5;
       }
 
-      /* Nav Buttons (Back, Forward, Reload) */
+      /* Nav Buttons */
       .nav-buttons {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         color: var(--chrome-icon-color);
       }
       .icon-btn {
-        width: 28px;
-        height: 28px;
+        width: 34px;
+        height: 34px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -251,13 +259,13 @@
       /* Omnibox (Address Bar) */
       .chrome-omnibox {
         flex: 1;
-        height: 34px;
+        height: 42px;
         background: var(--chrome-omnibox-bg);
         border-radius: 9999px;
         display: flex;
         align-items: center;
-        padding: 0 8px 0 6px;
-        gap: 8px;
+        padding: 0 12px 0 10px;
+        gap: 10px;
         position: relative;
       }
 
@@ -268,8 +276,8 @@
         justify-content: center;
         background: var(--chrome-tune-pill);
         border-radius: 9999px;
-        padding: 2px 8px;
-        height: 24px;
+        padding: 3px 10px;
+        height: 30px;
         color: var(--chrome-icon-color);
       }
 
@@ -277,7 +285,7 @@
         flex: 1;
         display: flex;
         align-items: baseline;
-        font-size: 13.5px;
+        font-size: 16px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -293,57 +301,56 @@
       }
 
       .omnibox-star {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--chrome-icon-color);
         cursor: pointer;
-        margin-right: 4px;
       }
 
       /* Right Toolbar Actions */
       .toolbar-actions {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         color: var(--chrome-icon-color);
-        padding-right: 2px;
+        padding-right: 4px;
       }
       .tb-divider {
         width: 1px;
-        height: 16px;
+        height: 20px;
         background: var(--chrome-divider);
-        margin: 0 2px;
+        margin: 0 4px;
       }
       .profile-avatar {
-        width: 26px;
-        height: 26px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         background: #c2410c;
         color: #fff;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
-      /* Chrome Bookmarks Bar (Height: 32px) */
+      /* 3. Bookmarks Bar (Height: 38px) */
       .chrome-bookmarks-bar {
-        height: 32px;
+        height: 38px;
         background: var(--chrome-toolbar-bg);
         display: flex;
         align-items: center;
-        padding: 0 14px;
-        font-size: 12px;
+        padding: 0 18px;
+        font-size: 14px;
         color: var(--chrome-text-secondary);
         border-bottom: 1px solid rgba(0, 0, 0, 0.25);
       }
       .side-panel-btn {
-        width: 22px;
-        height: 22px;
+        width: 28px;
+        height: 28px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -354,97 +361,98 @@
         margin-left: auto;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         color: var(--chrome-text-primary);
-        font-size: 12px;
+        font-size: 14px;
       }
       .bm-divider {
         width: 1px;
-        height: 16px;
+        height: 18px;
         background: var(--chrome-divider);
-        margin-right: 6px;
+        margin-right: 8px;
       }
 
-      /* Maximized Web Viewport: 1920x962 */
+      /* Maximized Web Viewport: 2560 x 1298 (1440 - 142) */
       .browser-body {
-        width: 1920px;
-        height: 962px;
+        width: 2560px;
+        height: 1298px;
         overflow: hidden;
         background: #0b1120;
         position: relative;
       }
       .zoom-container {
-        width: 1920px;
-        height: 962px;
+        width: 2560px;
+        height: 1298px;
         transform-origin: center center;
         will-change: transform;
       }
       .screencast-video {
-        width: 1920px;
-        height: 962px;
+        width: 2560px;
+        height: 1298px;
         object-fit: cover;
         object-position: top center;
         display: block;
+        image-rendering: -webkit-optimize-contrast;
       }
 
       /* Floating Glass HUD Overlays */
       .callout-pill {
         position: absolute;
-        bottom: 34px;
-        left: 36px;
+        bottom: 44px;
+        left: 48px;
         z-index: 50;
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        padding: 9px 20px;
+        gap: 12px;
+        padding: 12px 26px;
         border-radius: 9999px;
         background: rgba(15, 23, 42, 0.88);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        font-family: monospace;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.05em;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: #38bdf8;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
       }
       .callout-pulse {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
-        background: #0ea5e9;
-        box-shadow: 0 0 10px #0ea5e9;
+        background: #ef4444;
+        box-shadow: 0 0 14px #ef4444;
       }
 
       .callout-card {
         position: absolute;
-        bottom: 34px;
-        right: 36px;
+        bottom: 44px;
+        right: 48px;
         z-index: 50;
-        padding: 13px 22px;
-        background: rgba(15, 23, 42, 0.92);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 18px 26px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.88);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 12px;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
-        text-align: right;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
       }
       .callout-card-title {
-        font-size: 11px;
-        font-family: monospace;
+        font-size: 12px;
+        font-weight: 700;
         text-transform: uppercase;
+        letter-spacing: 0.08em;
         color: #94a3b8;
-        letter-spacing: 0.05em;
       }
       .callout-card-stat {
-        font-size: 17px;
-        font-weight: 700;
-        font-family: monospace;
-        color: #f8fafc;
-        margin-top: 3px;
+        font-size: 26px;
+        font-weight: 800;
+        color: #ef4444;
+        font-feature-settings: "tnum";
       }
 
       /* Scene Specific Zoom Focal Anchors */
@@ -457,7 +465,7 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="176.12" data-width="1920" data-height="1080">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="176.12" data-width="2560" data-height="1440">
 
       <!-- ============================================================== -->
       <!-- SCENE 1: Commercial Contracting Crisis (0.0s – 35.2s)          -->
@@ -473,7 +481,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 10 10" fill="#333f2f"><path d="M 10 0 A 10 10 0 0 0 0 10 L 10 10 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -483,7 +491,7 @@
                   <span class="tab-title">Redline | B2B Contract Audit</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 10 10" fill="#333f2f"><path d="M 0 0 L 0 10 L 10 10 A 10 10 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -582,7 +590,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 10 10" fill="#333f2f"><path d="M 10 0 A 10 10 0 0 0 0 10 L 10 10 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -592,7 +600,7 @@
                   <span class="tab-title">Redline | Privacy Architecture</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 10 10" fill="#333f2f"><path d="M 0 0 L 0 10 L 10 10 A 10 10 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -691,7 +699,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 10 10" fill="#333f2f"><path d="M 10 0 A 10 10 0 0 0 0 10 L 10 10 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -701,7 +709,7 @@
                   <span class="tab-title">Redline | Predatory Archetypes</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 10 10" fill="#333f2f"><path d="M 0 0 L 0 10 L 10 10 A 10 10 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -800,7 +808,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 10 10" fill="#333f2f"><path d="M 10 0 A 10 10 0 0 0 0 10 L 10 10 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -810,7 +818,7 @@
                   <span class="tab-title">Redline | Standard Benchmarks</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 10 10" fill="#333f2f"><path d="M 0 0 L 0 10 L 10 10 A 10 10 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -909,7 +917,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 10 10" fill="#333f2f"><path d="M 10 0 A 10 10 0 0 0 0 10 L 10 10 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -919,7 +927,7 @@
                   <span class="tab-title">Redline | Batch Remediation</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 10 10" fill="#333f2f"><path d="M 0 0 L 0 10 L 10 10 A 10 10 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -1018,7 +1026,7 @@
                 <div class="traffic-light green"></div>
               </div>
               <div class="chrome-tab-wrapper">
-                <svg class="tab-fillet-left" viewBox="0 0 8 8" fill="#333f2f"><path d="M 8 0 A 8 8 0 0 0 0 8 L 8 8 Z"/></svg>
+                <svg class="tab-fillet-left" viewBox="0 0 10 10" fill="#333f2f"><path d="M 10 0 A 10 10 0 0 0 0 10 L 10 10 Z"/></svg>
                 <div class="chrome-tab">
                   <div class="tab-favicon">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFEFB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1028,7 +1036,7 @@
                   <span class="tab-title">Redline | Production Export</span>
                   <span class="tab-close">✕</span>
                 </div>
-                <svg class="tab-fillet-right" viewBox="0 0 8 8" fill="#333f2f"><path d="M 0 0 L 0 8 L 8 8 A 8 8 0 0 0 0 0 Z"/></svg>
+                <svg class="tab-fillet-right" viewBox="0 0 10 10" fill="#333f2f"><path d="M 0 0 L 0 10 L 10 10 A 10 10 0 0 0 0 0 Z"/></svg>
               </div>
               <div class="new-tab-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
